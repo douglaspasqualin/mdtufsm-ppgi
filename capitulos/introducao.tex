@@ -1,0 +1,40 @@
+\chapter{Introdução}
+\label{chap:Introducao}
+
+Está é a introdução do trabalho. Um bom livro de linguagens de programação é o \cite{Sebesta:2005}. 
+Conforme Sebesta \citeyearpar{Sebesta:2005}, uma boa linguagem de programação é Java \cite{Sun:2010}.
+
+Uma definição formal é de sistema de tipos é proposta por Pierce:
+
+\begin{quote}
+ \emph{``Um sistema de tipos é um método sintático tratável para provar a ausência de certos comportamentos em 
+   um programa através da classificação de frases de acordo com o tipo de valores que elas computam''} \citep[p. 1]{Pierce:2002}
+\end{quote}
+
+Outras referências: \cite{Alex:2010}, \cite{Weiser:1991} e \cite{norell:thesis}.
+
+\section{Objetivos}
+O objetivo deste trabalho é .....
+
+\section{Tabela}
+Um exemplo de tabela é a \ref{tab:curry}:
+
+\begin{table}[!hbt] % [htb]-> here, top, bottom
+   \centering   % tabela centralizada
+   \setlength{\arrayrulewidth}{1\arrayrulewidth}  % espessura da  linha
+   \setlength{\belowcaptionskip}{5pt}  % espaço entre caption e tabela
+   \caption{Correspondência \textit{Curry-Howard}}
+   \begin{tabular}{l|l} % c=center, l=left, r=right 
+      \hline
+      \textbf{Lógica} & \textbf{Linguagens de Programação} \\
+      \hline
+      proposições & tipos  \\
+      proposição $P \supset Q$ & tipo $P \rightarrow Q$ (função) \\
+      proposição $P \wedge Q$ & tipo de produto $P \times Q$\\
+      prova de uma proposição $P$ & termo $t$ do tipo $P$  (ou seja, $t:P$)\\
+      proposição $P$ é provável & tipo $P$ é habitado por algum termo \\
+      \hline
+   \end{tabular}
+   \label{tab:curry}
+\end{table}
+
