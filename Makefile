@@ -5,7 +5,11 @@
 # Please check http://www.acoustics.hut.fi/u/mairas/UltimateLatexMakefile
 # for new versions.
 
-# Copyright (c) 2005 Matti Airas <Matti.Airas@hut.fi>
+# Copyright (c) 2005,2006 (in order of appearance):
+#	Matti Airas <Matti.Airas@hut.fi>
+# 	Rainer Jung
+#	Antoine Chambert-Loir
+#	Timo Kiravuo
 
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -26,7 +30,7 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 
-# $Id: Makefile,v 1.16 2005/12/07 10:57:32 mairas Exp $
+# $Id: Makefile,v 1.18 2006-06-19 10:58:11 mairas Exp $
 
 LATEX	= latex
 BIBTEX	= bibtex
@@ -42,6 +46,8 @@ RERUNBIB = "No file.*\.bbl|Citation.*undefined"
 MAKEIDX = "^[^%]*\\makeindex"
 MPRINT = "^[^%]*print"
 USETHUMBS = "^[^%]*thumbpdf"
+
+DATE=$(shell date +%Y-%m-%d)
 
 COPY = if test -r $(<:%.tex=%.toc); then cp $(<:%.tex=%.toc) $(<:%.tex=%.toc.bak); fi 
 RM = rm -f
@@ -62,19 +68,24 @@ PDF	= $(SRC:%.tex=%.pdf)
 
 
 define run-latex
-	  $(COPY);$(LATEX) $<
-	  egrep -q $(MAKEIDX) $< && ($(MAKEINDEX) $(<:%.tex=%);$(COPY);$(LATEX) $<) ; true
-	  egrep -c $(RERUNBIB) $(<:%.tex=%.log) && ($(BIBTEX) $(<:%.tex=%);$(COPY);$(LATEX) $<) ; true
-	  egrep -q $(RERUN) $(<:%.tex=%.log) && ($(COPY);$(LATEX) $<) ; true
-	  egrep -q $(RERUN) $(<:%.tex=%.log) && ($(COPY);$(LATEX) $<) ; true
-	  if cmp -s $(<:%.tex=%.toc) $(<:%.tex=%.toc.bak); then true ;else $(LATEX) $< ; fi
-	  $(RM) $(<:%.tex=%.toc.bak)
-	  # Display relevant warnings
-	  egrep -i "(Reference|Citation).*undefined" $(<:%.tex=%.log) ; true
+	$(COPY);$(LATEX) $<
+	egrep $(MAKEIDX) $< && ($(MAKEINDEX) $(<:%.tex=%);$(COPY);$(LATEX) $<) >/dev/null; true
+	egrep -c $(RERUNBIB) $(<:%.tex=%.log) && ($(BIBTEX) $(<:%.tex=%);$(COPY);$(LATEX) $<) ; true
+	egrep $(RERUN) $(<:%.tex=%.log) && ($(COPY);$(LATEX) $<) >/dev/null; true
+	egrep $(RERUN) $(<:%.tex=%.log) && ($(COPY);$(LATEX) $<) >/dev/null; true
+	if cmp -s $(<:%.tex=%.toc) $(<:%.tex=%.toc.bak); then true ;else $(LATEX) $< ; fi
+	$(RM) $(<:%.tex=%.toc.bak)
+	# Display relevant warnings
+	egrep -i "(Reference|Citation).*undefined" $(<:%.tex=%.log) ; true
+endef
+
+define run-pdflatex
+	LATEX=pdflatex
+	@$(run-latex)
 endef
 
 define get_dependencies
-	deps=`perl -ne '($$_)=/^[^%]*\\\include\{(.*?)\}/;@_=split /,/;foreach $$t (@_) {print "$$t.tex "}' $<`
+	deps=`perl -ne '($$_)=/^[^%]*\\\(?:include|input)\{(.*?)\}/;@_=split /,/;foreach $$t (@_) {print "$$t.tex "}' $<`
 endef
 
 define getbibs
@@ -85,19 +96,27 @@ define geteps
 	epses=`perl -ne '@foo=/^[^%]*\\\(includegraphics|psfig)(\[.*?\])?\{(.*?)\}/g;if (defined($$foo[2])) { if ($$foo[2] =~ /.eps$$/) { print "$$foo[2] "; } else { print "$$foo[2].eps "; }}' $< $$deps`
 endef
 
+define manconf
+	mandeps=`if test -r $(basename $@).cnf ; then cat $(basename $@).cnf |tr -d '\n\r' ; fi`
+endef
+
 all 	: $(TRG)
 
-.PHONY	: all show clean ps pdf showps
+.PHONY	: all show clean ps pdf showps veryclean
 
 clean	:
 	  -rm -f $(TRG) $(PSF) $(PDF) $(TRG:%.dvi=%.aux) $(TRG:%.dvi=%.bbl) $(TRG:%.dvi=%.blg) $(TRG:%.dvi=%.log) $(TRG:%.dvi=%.out) $(TRG:%.dvi=%.idx) $(TRG:%.dvi=%.ilg) $(TRG:%.dvi=%.ind) $(TRG:%.dvi=%.toc) $(TRG:%.dvi=%.d)
 
+veryclean	: clean
+	  -rm -f *.log *.aux *.dvi *.bbl *.blg *.ilg *.toc *.lof *.lot *.idx *.ind *.ps  *~
+
 # This is a rule to generate a file of prerequisites for a given .tex file
 %.d	: %.tex
 	$(get_dependencies) ; echo $$deps ; \
-	$(getbibs) ; echo $$bibs ;\
-	$(geteps) ; \
-	echo "$*.dvi $@ : $< $$deps $$bibs $$epses" > $@
+	$(getbibs) ; echo $$bibs ; \
+	$(geteps) ; echo $$epses ; \
+	$(manconf) ; echo  $$mandeps  ;\
+	echo "$*.dvi $@ : $< $$deps $$bibs $$epses $$mandeps" > $@ 
 
 include $(SRC:.tex=.d)
 
@@ -110,6 +129,10 @@ $(PSF)	: %.ps : %.dvi
 
 $(PDF)  : %.pdf : %.dvi
 	  @$(DVIPDF) -o $@ $<
+# To use pdflatex, comment the two lines above and uncomment the lines below
+#$(PDF) : %.pdf : %.tex
+#	@$(run-pdflatex)
+
 
 show	: $(TRG)
 	  @for i in $(TRG) ; do $(XDVI) $$i & done
