@@ -73,9 +73,10 @@
 \DeclareOption{diss}{
   \AtEndOfClass{
     \newcommand{\titlepagespecificinfo}{
-        Disserta{\c{c}}{\~a}o apresentada ao Curso de Mestrado %em Computa{\c{c}}{\~a}o  
-        do \@altcourse{} %Área de Concentração em Computa{\c{c}}{\~a}o, 
-        da \ufsm{} (UFSM, RS), como requisito parcial para obten{\c{c}}{\~a}o do grau de\\[6pt]
+        Disserta{\c{c}}{\~a}o apresentada ao Curso de Mestrado do %em Computa{\c{c}}{\~a}o
+        Programa de \\ Pós-Graduação em Informática (PPGI), Área de Concentração em  Computa{\c{c}}{\~a}o,  
+%        do \@altcourse{}, Área de Concentração em Computa{\c{c}}{\~a}o, 
+        da \ufsm{} (UFSM, RS), \\ como requisito parcial para obten{\c{c}}{\~a}o do grau de\\[6pt]
       \textbf{\@degree}
     }
     \def\doctypename{Dissertação de Mestrado}
@@ -147,6 +148,8 @@
 \RequirePackage{lastpage}
 \RequirePackage{indentfirst} 
 \RequirePackage{natbib}
+\RequirePackage{eso-pic}
+
 
 %%=============================================================================
 %% Margens do texto
@@ -437,6 +440,15 @@
   E-mail: {#2}
 }
 
+\newcommand{\includeCIP}[1]{
+   %impresso no verso da folha de rosto, nesse cao não deve contar a página
+   %\setcounter{page}{1}
+   \clearpage\mbox{}
+   \AddToShipoutPicture{\includegraphics{#1}}
+   \clearpage
+   \ClearShipoutPicture
+}
+
 \def\@authorbox{%
   \parbox[t]{\textwidth}{%
     \centering
@@ -466,10 +478,10 @@
     \vfill
     \vspace{1,2cm}
     \@ifundefined{@advisorcommittee}{}{\centerline{\textbf{\@advisorcommittee}}}
-    \centerline{(Presidente/Orientador)}
-    \vspace{1,2cm}
+    \centerline{(Presidente/Orientadora)}
+    \vspace{1,5cm}
     \@ifundefined{@committeea}{}{\centerline{\@committeea}}
-    \vspace{1,2cm}
+    \vspace{1,5cm}
     \@ifundefined{@committeeb}{}{\centerline{\@committeeb}}
   }
 }
