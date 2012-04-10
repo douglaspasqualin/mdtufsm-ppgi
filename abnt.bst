@@ -1,6 +1,6 @@
 %==============================================================================
 % abnt.bst
-% Estilo BibTeX de formata√ß√£o de refer√™ncias bibliogr√°ficas no padr√£o ABNT
+% Estilo BibTeX de formataÁ„o de referÍncias bibliogr·ficas no padr„o ABNT
 %
 % UFRGS TeX Users Group
 % Informatics Institute --- UFRGS
@@ -28,7 +28,7 @@
 %==============================================================================
 
 %==============================================================================
-% Defini√ß√£o dos campos das entradas
+% DefiniÁ„o dos campos das entradas
 %==============================================================================
 ENTRY
 { 
@@ -83,8 +83,8 @@ MACRO {dec} {"Dec."}
 %==============================================================================
 % Definicao de strings usados na elaboracao das referencias
 %==============================================================================
-FUNCTION {str:mastersthesis} {"Disserta{\c{c}}{\~a}o (Mestrado)"}
-FUNCTION {str:phdthesis} {"Tese (Doutorado)"}
+FUNCTION {str:mastersthesis} {"Disserta{\c{c}}{\~a}o (Mestrado em Ci{\^e}ncia da Computa{\c{c}}{\~a}o)"}
+FUNCTION {str:phdthesis} {"Tese (Doutorado em Ci{\^e}ncia da Computa{\c{c}}{\~a}o)"}
 FUNCTION {str:chapter} {"Cap."}
 
 %==============================================================================
@@ -332,6 +332,10 @@ FUNCTION {format.names}
 	{
 		duplicate$ duplicate$ i "{ll}{~jj}" format.name$
 		duplicate$ "others" =
+		n #3 >
+		i #2 =
+		and
+		or
 		{
 			pop$ pop$ names " et~al." *
 			n 'i :=
@@ -470,7 +474,7 @@ FUNCTION {format.entrytitle}
 }
 
 %==============================================================================
-% Converte a edicao literal ("First", "Second", etc., que √© o padr√£o indicado
+% Converte a edicao literal ("First", "Second", etc., que È o padr„o indicado
 % no manual do BibTeX) para o algarismo correspondente. Recebe na pilha o
 % string e devolve o numero.
 %==============================================================================
@@ -916,7 +920,7 @@ FUNCTION {format.complementary.data.with.page.range}
 %
 FUNCTION {format.proceedings.booktitle}
 {
-	process.proceedings.booktitle "" swap$ add.year add.address add.to.item
+	process.proceedings.booktitle "" swap$ add.address add.to.item
 	swap$ "{\ldots}" * emphasize " " swap$ * *
 }
 
@@ -944,8 +948,8 @@ FUNCTION {book}
 {
 	""
 	editor empty$
-	       {format.editor}
-	       {format.author}
+		{format.author}
+		{format.editor}
 	if$ add.to.item
 	#1 title format.title add.to.item
 	format.edition add.to.item
@@ -960,8 +964,8 @@ FUNCTION {inbook}
 {
 	""
 	editor empty$
-		{format.editor}
 		{format.author}
+		{format.editor}
 	if$ add.to.item
 	#1 title format.title add.to.item
 	format.edition add.to.item
@@ -1060,7 +1064,7 @@ FUNCTION {misc}
 		format.misc.publication add.to.item
 		format.complementary.data.with.totalpages add.to.item
 	}{
-		format.misc.publication add.to.item format.note add.howpublished add.to.item
+		format.note add.howpublished add.to.item
 	} if$
 
 	write.item
@@ -1282,7 +1286,7 @@ FUNCTION {get.labelstring.all}
 }
 
 %==============================================================================
-% Constru√ß√£o dos labels
+% ConstruÁ„o dos labels
 %==============================================================================
 FUNCTION {prepare.label.sorting}
 {
