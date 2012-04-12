@@ -25,7 +25,9 @@
 \def\tablename{Table}%
 \def\authorname{Author}%
 \def\advisorname{Advisor}%
+\def\advisornamef{Advisor}%
 \def\coadvisorname{Coadvisor}%
+\def\coadvisornamef{Coadvisor}%
 \def\listabbrvname{List of Abbreviations and Acronyms}%
 \def\listsymbolname{List of Symbols}%
 \def\annexname{Annex}%
