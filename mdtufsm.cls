@@ -29,7 +29,7 @@
 %% Identificação
 %%=============================================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mdtufsm}[2011/06/14 v2.0.0 Formatacao de monografias, dissertacoes e teses da UFSM]
+\ProvidesClass{mdtufsm}[2012/04/11 v2.0.1 Formatacao de monografias, dissertacoes e teses da UFSM]
 
 %%=============================================================================
 %% Declaração de opções
@@ -150,7 +150,6 @@
 \RequirePackage{natbib}
 \RequirePackage{eso-pic}
 
-
 %%=============================================================================
 %% Margens do texto
 %%=============================================================================
@@ -251,15 +250,15 @@
 }
 \newcommand{\@abstractkw}{%
         \@ifundefined{keywa}{}{\expandafter\MakeUppercase\keywa}%
-        \@ifundefined{keywb}{}{, \keywb}%
-        \@ifundefined{keywc}{}{, \keywc}%
-        \@ifundefined{keywd}{}{, \keywd}%
-        \@ifundefined{keywe}{}{, \keywe}%
-        \@ifundefined{keywf}{}{, \keywf}%
-        \@ifundefined{keywg}{}{, \keywg}%
-        \@ifundefined{keywh}{}{, \keywh}%
-        \@ifundefined{keywi}{}{, \keywi}%
-        \@ifundefined{keywj}{}{, \keywj}%
+        \@ifundefined{keywb}{}{. \keywb}%
+        \@ifundefined{keywc}{}{. \keywc}%
+        \@ifundefined{keywd}{}{. \keywd}%
+        \@ifundefined{keywe}{}{. \keywe}%
+        \@ifundefined{keywf}{}{. \keywf}%
+        \@ifundefined{keywg}{}{. \keywg}%
+        \@ifundefined{keywh}{}{. \keywh}%
+        \@ifundefined{keywi}{}{. \keywi}%
+        \@ifundefined{keywj}{}{. \keywj}%
 }
 
 %%=============================================================================
@@ -478,7 +477,7 @@
     \vfill
     \vspace{1,2cm}
     \@ifundefined{@advisorcommittee}{}{\centerline{\textbf{\@advisorcommittee}}}
-    \centerline{(Presidente/Orientadora)}
+    \centerline{(Presidente/Orientador)}
     \vspace{1,5cm}
     \@ifundefined{@committeea}{}{\centerline{\@committeea}}
     \vspace{1,5cm}
@@ -490,9 +489,9 @@
 
 
 %%=============================================================================
-%% Ajuste do sumário (sem endentação) 
+%% Ajuste do sumário (sem indentação) 
 %%=============================================================================
-\newlength{\ii@chapnumindent}\setlength{\ii@chapnumindent}{1.8em}
+\newlength{\ii@chapnumindent}\setlength{\ii@chapnumindent}{1 em}
 \renewcommand\@dotsep{1.5}
 \renewcommand*{\l@chapter}[2]{
   \addpenalty{-\@highpenalty}
@@ -512,8 +511,8 @@
   \endgroup
 }
 \renewcommand*{\l@section}[2]
-              {\@dottedtocline{1}{0em}{2.8em}{\textbf{#1}}{\hss #2}}
-\renewcommand*{\l@subsection}{\@dottedtocline{2}{0em}{3.7em}}
+              {\@dottedtocline{1}{0em}{1.7em}{\textbf{#1}}{\hss #2}}
+\renewcommand*{\l@subsection}{\@dottedtocline{2}{0em}{2.4em}}
 \newif\if@aftertoc
 \@aftertocfalse
 \renewcommand{\tableofcontents}{%
@@ -560,10 +559,13 @@
 %%=============================================================================
 \renewenvironment{abstract}{%
   \chapter*{\abstractname}
+	\vspace{-1cm}
   \noindent\abstractheaderbox
   \indent
+	%\setlength{\baselineskip}{1.5\baselineskip}
 }{%
-  \par\vfill
+  %\setlength{\baselineskip}{\baselineskip}
+  \par\vspace{1cm}
   \noindent\textbf{\keywordsname:} \@abstractkw.
 }
 
@@ -586,10 +588,11 @@
         \gdef\@englishkeywords{#3}
         \begin{otherlanguage}{english}
           \chapter*{\abstractname}
+					\vspace{-1cm}
           \noindent\englishabstractheaderbox{#1}{#2}{#4}{#5}
           \indent
 }{
-          \par\vfill
+          \par\vspace{1cm}
           \noindent\textbf{\keywordsname:} \@englishkeywords.
        \end{otherlanguage}
 }
@@ -627,8 +630,9 @@
         \pagestyle{mdtufsm}\let\ps@plain\ps@mdtufsm%
         \@makechapterhead{#2}\@afterheading
 }
+%Aqui alterei
 \def\@makechapterhead#1{%
-        \reset@font\noindent{\ii@chapterfont\centering\textbf{\@chapapp\thechapter\hspace{1em}\MakeUppercase{#1}}\par}
+        \reset@font\noindent{\ii@chapterfont\centering\textbf{\@chapapp\thechapter\hspace{0.5em}\MakeUppercase{#1}}\par}
         \addvspace{25pt}
 }
 \def\@schapter#1{%
@@ -658,20 +662,20 @@
 %% Formatação das seções
 %%=============================================================================
 \setcounter{secnumdepth}{4}
-\renewcommand{\section}{%
-        \@startsection{section}{1}{0pt}{18pt}{9pt}{\reset@font\large\bfseries}
+\renewcommand{\section}{%name, level, indent, beforeskip, afterskip,style
+        \@startsection{section}{1}{0pt}{18pt}{18pt}{\reset@font\bfseries\@setfontsize\Large{12}{20}}
 }
 \renewcommand{\subsection}{%
-        \@startsection{subsection}{2}{0pt}{12pt}{6pt}{\reset@font\bfseries}
+        \@startsection{subsection}{2}{0pt}{12pt}{18pt}{\reset@font\@setfontsize\Large{12}{20}}
 }
 \renewcommand{\subsubsection}{%
-        \@startsection{subsubsection}{3}{0pt}{12pt}{6pt}{\reset@font\itshape}
+        \@startsection{subsubsection}{3}{0pt}{12pt}{18pt}{\reset@font\@setfontsize\Large{12}{20}}
 }
 \renewcommand{\paragraph}{%
-        \@startsection{paragraph}{4}{0pt}{12pt}{6pt}{\reset@font}
+        \@startsection{paragraph}{4}{0pt}{12pt}{18pt}{\reset@font\@setfontsize\Large{12}{20}}
 }
 \renewcommand{\subparagraph}{%
-        \@startsection{subparagraph}{5}{0pt}{1ex}{-1em}{\reset@font\bfseries}
+        \@startsection{subparagraph}{5}{0pt}{1ex}{-1em}{\reset@font\@setfontsize\Large{12}{20}}
 }
 
 %%=============================================================================
@@ -696,11 +700,12 @@
 \renewcommand*{\l@figure}{\@dottedtocline{1}{0em}{5.5em}}
 \let\l@table\l@figure
 
+
 %%=============================================================================
 %% Redefinição do formato de citações longas
 %%=============================================================================
 \renewenvironment{quote}{
-        \small
+        \footnotesize
         \begin{list}{}{\setlength{\leftmargin}{40mm}\item\relax}
 }{
         \end{list}

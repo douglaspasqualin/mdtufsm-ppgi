@@ -15,7 +15,7 @@
 \usepackage{amsmath,latexsym,amssymb} %Pacotes matemáticos
 \usepackage[%hidelinks%, 
             bookmarksopen=true,linktoc=none,colorlinks=true,
-            linkcolor=blue,citecolor=blue,filecolor=magenta,urlcolor=blue,
+            linkcolor=black,citecolor=black,filecolor=magenta,urlcolor=blue,
             pdftitle={Título da Dissertação ou Trabalho ....},
             pdfauthor={Nome Autor Sobrenome},
             pdfsubject={Dissertação de Mestrado},
@@ -59,7 +59,9 @@
 \date{01}{Março}{2011}
 
 %Palavras chave
-\keyword{Dissertação, Modelo, LaTeX} 
+\keyword{Dissertação} 
+\keyword{Modelo}
+\keyword{LaTeX}
 
 %%=============================================================================
 %% Início do documento
@@ -77,6 +79,18 @@
 %Somente obrigatório para dissertação, para TG, remover a linha
 %Na hora de gerar a catalogação na página da biblioteca da UFSM, colocar 1 página 
 %a mais referente a própria catalogação
+%\includeCIP{CIP.pdf}
+
+%Somente obrigatório para dissertação, para TG, remover as linhas	77	%Somente obrigatório para dissertação, para TG, remover a linha
+%Como a CIP vai ser impressa atrás da página de rosto, as margens inner e outer	78	%Na hora de gerar a catalogação na página da biblioteca da UFSM, colocar 1 página
+%devem ser invertidas.	79	%a mais referente a própria catalogação
+%\newgeometry{inner=20mm,outer=30mm,top=30mm,bottom=20mm}	
+%\makeCIP		
+  %{XXXX} %cutter		
+  %{000.00} %CDU		
+  %{Nome do Bibliotecário - CRB-99/999} %Bibliotecatório que fez a CIP		
+  %{nomedoautor@gmail.com} %email do autor		
+%\restoregeometry
 \includeCIP{CIP.pdf}
 
 %folha de aprovação
@@ -114,7 +128,12 @@ Obrigado ao \LaTeX por facilitar a digitação do trabalho
 %% Resumo
 %%=============================================================================
 \begin{abstract}
-Este é o resumo do trabalho ...
+Este é o resumo do trabalho ... Este é o resumo do trabalho ...
+Este é o resumo do trabalho ... Este é o resumo do trabalho ...
+Este é o resumo do trabalho ... Este é o resumo do trabalho ...
+Este é o resumo do trabalho ... Este é o resumo do trabalho ...
+Este é o resumo do trabalho ... Este é o resumo do trabalho ...
+Este é o resumo do trabalho ... Este é o resumo do trabalho ...
 \end{abstract}
 
 %%=============================================================================
@@ -127,10 +146,13 @@ Este é o resumo do trabalho ...
 \begin{englishabstract}
 {Dissertation Title}
 {Post-Graduate Program in Informatics}
-{Keywords1, Keyword2}
+{Keywords1. Keyword2}
 {March}
 {st}
-Abstract ...
+Abstract ... Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...
+Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...
+Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...
+Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...
 \end{englishabstract}
 
 %% Lista de Ilustrações (opc)
