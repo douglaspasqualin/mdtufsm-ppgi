@@ -27,6 +27,12 @@
 %Margens conforme MDT 7ª edição, arrumar diretamente no mdtufsm.cls para funcionar a opção twoside *PENDENTE*
 \usepackage[inner=30mm,outer=20mm,top=30mm,bottom=20mm]{geometry} 
 
+%==============================================================================
+% Se o pacote hyperref foi carregado a linha abaixo corrige um bug na hora
+% de montar o sumário da lista de figuras e tabelas
+% Se o pacote não foi carregado, comentar a linha %
+%==============================================================================
+\input{macros/bugcaption}
 
 %==============================================================================
 % Identificação do trabalho
@@ -47,8 +53,12 @@
 
 %Orientador
 \advisor[Profª.]{Dr.}{Silva}{João da}
+%Se for uma ``orientadora'' descomentar a linha baixo
+%\orientadoratrue
+
 %Co orientador, comentar se não existir
-\coadvisor[Prof.]{Dr.}{Pereira}{José}
+\coadvisor[Prof.]{Drª.}{Pereira}{Maria Regina}
+\coorientadoratrue %Se for uma ``Co-Orientadora''
 
 %Avaliadores (Banca)
 \committee[Dr.]{Sobrenome}{Fulano}{UFSM}

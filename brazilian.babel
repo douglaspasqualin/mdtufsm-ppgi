@@ -20,12 +20,14 @@
 \def\remarknamek{Observa\c{c}\~{a}o}%
 \def\lemmaname{Lema}%
 \def\theoremname{Teorema}%
-\def\proofname{Prova}%
+%\def\proofname{Prova}%
 \def\figurename{Figura}%
 \def\tablename{Tabela}%
 \def\authorname{Autor}%
 \def\advisorname{Orientador}%
+\def\advisornamef{Orientadora}%
 \def\coadvisorname{Co-orientador}%
+\def\coadvisornamef{Co-orientadora}%
 \def\listabbrvname{Lista de Abreviaturas e Siglas}%
 \def\listsymbolname{Lista de S{\'\i}mbolos}%
 \def\annexname{Anexo}%

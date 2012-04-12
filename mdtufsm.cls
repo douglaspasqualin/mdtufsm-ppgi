@@ -134,6 +134,10 @@
 }
 \location{Santa~Maria}{RS}{Brasil}
 
+%Para saber se é ``orientadora'' em vez de ``orientador''
+\newif\iforientadora
+\newif\ifcoorientadora
+
 %%=============================================================================
 %% Herança da classe 'report' e inclusão de pacotes e arquivos necessários
 %%=============================================================================
@@ -360,9 +364,9 @@
   \parbox[t]{\textwidth}{
     \centering
     \@ifundefined{@advisor}{}{
-      \vfill{\large\textbf{\advisorname:~\@advisor}}}
+      \vfill{\large\textbf{\iforientadora\advisornamef\else\advisorname\fi:~\@advisor}}}
     \@ifundefined{@coadvisor}{}{
-      \\[6ex]{\large\textbf{\coadvisorname:~\@coadvisor}}}
+      \\[6ex]{\large\textbf{\ifcoorientadora\coadvisornamef\else\coadvisorname\fi:~\@coadvisor}}}
   }
   \vfill\vfill\vfill
   \centerline{\large\textbf{\@trabalhoNumero}}
@@ -417,8 +421,8 @@
                 \noindent #1 \quad \@authoralast, \@authorafirst\par
                 \@title\ / por \@authora.\ -- \@publyear.\\
                 \indent\pageref{LastPage}~f.: il.; 30 cm. \par
-				\indent\advisorname: \@advisorfirst\ \@advisorlast
-				\@ifundefined{@coadvisor}{}{\\ \indent\coadvisorname: \@coadvisorfirst\ \@coadvisorlast} \\
+				\indent\iforientadora\advisornamef\else\advisorname\fi: \@advisorfirst\ \@advisorlast
+				\@ifundefined{@coadvisor}{}{\\ \indent\ifcoorientadora\coadvisornamef\else\coadvisorname\fi: \@coadvisorfirst\ \@coadvisorlast} \\
 				\indent \doctypenameCIP \ - \ufsm, \@institute, \@altcourse, RS, \@publyear. \par
                 \@cipkw I.~\@advisorlast, \@advisorfirst. \@ifundefined{@coadvisorfirst}{II.~T\'{\i}tulo.}{II.~\@coadvisorlast, \@coadvisorfirst. III.~T\'{\i}tulo.}\par
 				CDU #2 \\
@@ -477,7 +481,11 @@
     \vfill
     \vspace{1,2cm}
     \@ifundefined{@advisorcommittee}{}{\centerline{\textbf{\@advisorcommittee}}}
-    \centerline{(Presidente/Orientador)}
+		\iforientadora
+      \centerline{(Presidente/Orientadora)}
+		\else
+		  \centerline{(Presidente/Orientador)}
+		\fi
     \vspace{1,5cm}
     \@ifundefined{@committeea}{}{\centerline{\@committeea}}
     \vspace{1,5cm}
@@ -495,7 +503,7 @@
 \renewcommand\@dotsep{1.5}
 \renewcommand*{\l@chapter}[2]{
   \addpenalty{-\@highpenalty}
-  \vskip -1ex \@plus\p@
+  \vskip -2.5ex \@plus\p@
   \setlength\@tempdima{1.5em}
   \begingroup
   \parindent \z@ \rightskip \@pnumwidth
@@ -577,8 +585,8 @@
     \ufsm\\~\\
     \textbf{\MakeUppercase{\@title}}\\
     \MakeUppercase{\authorname}:~\MakeUppercase{\@authora}\\
-    \@ifundefined{@advisorwithouttitle}{}{\MakeUppercase{\advisorname}:~\MakeUppercase{\@advisorwithouttitle}\\}
-    \@ifundefined{@coadvisorwithouttitle}{}{\MakeUppercase{\coadvisorname}:~\MakeUppercase{\@coadvisorwithouttitle}\\}
+    \@ifundefined{@advisorwithouttitle}{}{\MakeUppercase{\iforientadora\advisornamef\else\advisorname\fi}:~\MakeUppercase{\@advisorwithouttitle}\\}
+    \@ifundefined{@coadvisorwithouttitle}{}{\MakeUppercase{\ifcoorientadora\coadvisornamef\else\coadvisorname\fi}:~\MakeUppercase{\@coadvisorwithouttitle}\\}
     Local da Defesa e Data:~\@city,~\@date.\\~\\
   }
 }
@@ -605,8 +613,8 @@
     \ufsmIngles\\~\\
     \textbf{\MakeUppercase{#1}}\\
     \MakeUppercase{\authorname}:~\MakeUppercase{\@authora}\\
-    \@ifundefined{@advisorwithouttitle}{}{\MakeUppercase{\advisorname}:~\MakeUppercase{\@advisorwithouttitle}\\}
-    \@ifundefined{@coadvisorwithouttitle}{}{\MakeUppercase{\coadvisorname}:~\MakeUppercase{\@coadvisorwithouttitle}\\}
+    \@ifundefined{@advisorwithouttitle}{}{\MakeUppercase{\iforientadora\advisornamef\else\advisorname\fi}:~\MakeUppercase{\@advisorwithouttitle}\\}
+    \@ifundefined{@coadvisorwithouttitle}{}{\MakeUppercase{\ifcoorientadora\coadvisornamef\else\coadvisorname\fi}:~\MakeUppercase{\@coadvisorwithouttitle}\\}
     Defense Place and Date:~\@city,~\dateingles{#3}{#4}.\\~\\
   }
 }
@@ -681,6 +689,17 @@
 %%=============================================================================
 %% Redefinição do conteúdo das listas de figuras e tabelas
 %%=============================================================================
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#1~-- #2}%
+  \ifdim \wd\@tempboxa >\hsize
+    #1~-- #2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+	
 \newif\if@captionlisting\@captionlistingtrue
 \long\def\@caption#1[#2]#3{%
   \par
@@ -699,7 +718,6 @@
 }
 \renewcommand*{\l@figure}{\@dottedtocline{1}{0em}{5.5em}}
 \let\l@table\l@figure
-
 
 %%=============================================================================
 %% Redefinição do formato de citações longas
