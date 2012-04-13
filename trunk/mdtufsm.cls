@@ -29,7 +29,7 @@
 %% Identificação
 %%=============================================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mdtufsm}[2012/04/11 v2.0.1 Formatacao de monografias, dissertacoes e teses da UFSM]
+\ProvidesClass{mdtufsm}[2012/04/12 v1.2.2a Formatacao de monografias, dissertacoes e teses da UFSM]
 
 %%=============================================================================
 %% Declaração de opções
@@ -134,6 +134,12 @@
 }
 \location{Santa~Maria}{RS}{Brasil}
 
+\newcommand\LargeA{\@setfontsize\LargeA{18pt}{0}}
+\newcommand\LargeB{\@setfontsize\LargeB{16pt}{0}}
+\newcommand\LargeC{\@setfontsize\LargeC{14pt}{0}}
+
+%Para saber se é uma ``autora'' em vez de ``autor''
+\newif\ifautora
 %Para saber se é ``orientadora'' em vez de ``orientador''
 \newif\iforientadora
 \newif\ifcoorientadora
@@ -185,6 +191,9 @@
 \setlength{\marginparsep}{\mdt@sidemargin}
         \addtolength{\marginparsep}{-\marginparwidth}
         \setlength{\marginparsep}{.5\marginparsep}
+
+%indentar em 1,25 o primeiro parágrafo
+\setlength{\parindent}{1.25cm}%
 
 %%=============================================================================
 %% Numeração das páginas
@@ -308,9 +317,9 @@
   \parbox[t]{\textwidth}{
     \centering
     \vbox to \titlepagewinvoffset{
-      {\large\textbf{\MakeUppercase{\ufsm}}}\\
-      {\large\textbf{\MakeUppercase{\@institute}}}\\
-      {\large\textbf{\MakeUppercase{\@course}}}\\
+      {\LargeC\textbf{\MakeUppercase{\ufsm}}}\\
+      {\LargeC\textbf{\MakeUppercase{\@institute}}}\\
+      {\LargeC\textbf{\MakeUppercase{\@course}}}\\
     }
     \vfill
     % título
@@ -318,20 +327,20 @@
       \centering
       \vbox to \titlepagewinheight{%
         \vspace*{\fill}
-        {\LARGE\textbf{\MakeUppercase{\@title}}\par}
+        {\LargeA\textbf{\MakeUppercase{\@title}}\par}
         \vspace{5cm}
         \vfill
-        \centerline{\large\textbf{\MakeUppercase{\doctypename}}}
+        \centerline{\LargeC\textbf{\MakeUppercase{\doctypename}}}
       }
     }
   }
   \vspace{1cm}
   \vfill
-  \centerline{\Large\textbf{\@authora}}
+  \centerline{\LargeB\textbf{\@authora}}
   \vfill
-  \centerline{\large\textbf{\@city, \@state, \@country}}
+  \centerline{\LargeC\textbf{\@city, \@state, \@country}}
   \vspace{12pt}
-  \centerline{\large\textbf{\@publyear}}
+  \centerline{\LargeC\textbf{\@publyear}}
 }
 
 
@@ -343,7 +352,7 @@
   \noindent
   \parbox[t]{\textwidth}{
     \centering
-    {\Large\textbf{\MakeUppercase{\@title}}\par}
+    {\LargeB\textbf{\MakeUppercase{\@title}}\par}
   }
   \vfill\vfill\vfill
  % \centerline{\large\textbf{por}}
@@ -351,7 +360,7 @@
   \noindent
   \parbox[t]{\textwidth}{
     \centering
-    {\large\textbf{\@authora}}
+    {\LargeC\textbf{\@authora}}
   }
   \vfill\vfill
   \noindent
@@ -364,15 +373,15 @@
   \parbox[t]{\textwidth}{
     \centering
     \@ifundefined{@advisor}{}{
-      \vfill{\large\textbf{\iforientadora\advisornamef\else\advisorname\fi:~\@advisor}}}
+      \vfill{\LargeC\textbf{\iforientadora\advisornamef\else\advisorname\fi:~\@advisor}}}
     \@ifundefined{@coadvisor}{}{
-      \\[6ex]{\large\textbf{\ifcoorientadora\coadvisornamef\else\coadvisorname\fi:~\@coadvisor}}}
+      \\[6ex]{\LargeC\textbf{\ifcoorientadora\coadvisornamef\else\coadvisorname\fi:~\@coadvisor}}}
   }
   \vfill\vfill\vfill
-  \centerline{\large\textbf{\@trabalhoNumero}}
-  \centerline{\large\textbf{\@city, \@state, \@country}}
+  \centerline{\LargeC\textbf{\@trabalhoNumero}}
+  \centerline{\LargeC\textbf{\@city, \@state, \@country}}
   \vspace{12pt}
-  \centerline{\large\textbf{\@publyear}}
+  \centerline{\LargeC\textbf{\@publyear}}
 }
 
 
@@ -388,9 +397,9 @@
   \noindent
   \parbox[t]{\textwidth}{%
     \centering
-    {\large\textbf{\ufsm}} \\
-    {\large\textbf{\@institute}} \\
-    {\large\textbf{\@course}} \\
+    {\LargeC\textbf{\ufsm}} \\
+    {\LargeC\textbf{\@institute}} \\
+    {\LargeC\textbf{\@course}} \\
   }
   \vfill
   \noindent\@authorbox
@@ -398,49 +407,49 @@
   \noindent\approvecommitteeinfo
   \vfill
   \vfill
-  \centerline{\@city,~\@date.}
+  \centerline{\LargeC\@city,~\@date.}
 }
 
-\newcommand{\makeCIP}[4]{
+\newcommand{\makeCIP}[1]{
   \clearpage
   \mbox{} \vfill
-  \@cipwindow{#1}{#2}
+  \@cipwindow
   \newline \newline
-  \nominata{#3}{#4}
+  \nominata{#1}
   %se for impresso, não deve contar a página, pois será impressa no verso da folha de aprovação
- % \setcounter{page}{2}
+  %\setcounter{page}{2}
 }
 
-\def\@cipwindow#1#2{%
+\def\@cipwindow{%
         \noindent
-        \framebox[160mm]{
-        \begin{minipage}{140mm}%
-                \vspace*{0.2ex}
-                \setlength{\parindent}{3em}%
+        \framebox[140mm]{
+        \begin{minipage}{120mm}%
+                \vspace*{2ex}
+                \setlength{\parindent}{2em}%
                 \setlength{\parskip}{1.4ex}%
-                \noindent #1 \quad \@authoralast, \@authorafirst\par
+                \noindent \@authoralast, \@authorafirst\par
                 \@title\ / por \@authora.\ -- \@publyear.\\
                 \indent\pageref{LastPage}~f.: il.; 30 cm. \par
 				\indent\iforientadora\advisornamef\else\advisorname\fi: \@advisorfirst\ \@advisorlast
 				\@ifundefined{@coadvisor}{}{\\ \indent\ifcoorientadora\coadvisornamef\else\coadvisorname\fi: \@coadvisorfirst\ \@coadvisorlast} \\
 				\indent \doctypenameCIP \ - \ufsm, \@institute, \@altcourse, RS, \@publyear. \par
                 \@cipkw I.~\@advisorlast, \@advisorfirst. \@ifundefined{@coadvisorfirst}{II.~T\'{\i}tulo.}{II.~\@coadvisorlast, \@coadvisorfirst. III.~T\'{\i}tulo.}\par
-				CDU #2 \\
-                \vspace{0.2ex}
+        \vspace{4ex}
         \end{minipage}%
         }%
     }
 
-\newcommand{\nominata}[2]{
-  \noindent
-  Ficha catalográfica elaborada por \\
-  {#1} \\
-  Biblioteca Central da UFSM \\
+\newcommand{\nominata}[1]{
+ \vspace{2ex}
+ % \noindent
+ % Ficha catalográfica elaborada por \\
+ % {#1} \\
+ % Biblioteca Central da UFSM \\
   \hrule
   \vskip 10\p@
   \noindent \copyright \ \@publyear \\
   Todos os direitos autorais reservados a \@authora. A reprodução de partes ou do todo deste trabalho só poderá ser feita mediante a citação da fonte. \\
-  E-mail: {#2}
+  E-mail: {#1}
 }
 
 \newcommand{\includeCIP}[1]{
@@ -456,17 +465,17 @@
   \parbox[t]{\textwidth}{%
     \centering
     \vspace{2cm}
-    \large{A Comiss\~{a}o Examinadora, abaixo assinada,} \\
+    \LargeC{A Comiss\~{a}o Examinadora, abaixo assinada,} \\
 	  {aprova \doctypearticle~\doctypename} \\
+	  \vspace{2cm}
+	  \MakeUppercase{\LargeC\textbf{\@title}}\\
 	  \vspace{1,5cm}
-	  \MakeUppercase{\textbf{\@title}}\\
-	  \vspace{1cm}
 	  elaborad\doctypearticle~ por\\
 	  \textbf{\@authora}\\
 	  \@ifundefined{@authorb}{}{\textbf{\@authorb}\\}%
 	  \@ifundefined{@authorc}{}{\textbf{\@authorc}\\}%
 	  \@ifundefined{@authord}{}{\textbf{\@authord}\\}%
-	  \vspace{1cm}
+	  \vspace{1.5cm}
 		 {como requisito parcial para obtenção do grau de} \\
 		 \textbf{\@degree}  
   }
@@ -476,23 +485,21 @@
 
 \newcommand{\approvecommitteeinfo}{%
   \parbox[t]{\textwidth}{
-    \large
-    \centerline{\textbf{COMISSÃO EXAMINADORA:}}
+    \centerline{\LargeC\textbf{COMISSÃO EXAMINADORA:}}
     \vfill
     \vspace{1,2cm}
-    \@ifundefined{@advisorcommittee}{}{\centerline{\textbf{\@advisorcommittee}}}
+    \@ifundefined{@advisorcommittee}{}{\normalsize\centerline{\textbf{\@advisorcommittee}}}
 		\iforientadora
-      \centerline{(Presidente/Orientadora)}
+      \normalsize\centerline{(Presidente/Orientadora)}
 		\else
-		  \centerline{(Presidente/Orientador)}
+		  \normalsize\centerline{(Presidente/Orientador)}
 		\fi
     \vspace{1,5cm}
-    \@ifundefined{@committeea}{}{\centerline{\@committeea}}
+    \@ifundefined{@committeea}{}{\normalsize\centerline{\@committeea}}
     \vspace{1,5cm}
-    \@ifundefined{@committeeb}{}{\centerline{\@committeeb}}
+    \@ifundefined{@committeeb}{}{\normalsize\centerline{\@committeeb}}
   }
 }
-
 
 
 
@@ -521,12 +528,27 @@
 \renewcommand*{\l@section}[2]
               {\@dottedtocline{1}{0em}{1.7em}{\textbf{#1}}{\hss #2}}
 \renewcommand*{\l@subsection}{\@dottedtocline{2}{0em}{2.4em}}
+\renewcommand*{\l@subsubsection}{\@dottedtocline{3}{0em}{3em}}
+\renewcommand*{\l@paragraph}{\@dottedtocline{4}{0em}{3.8em}}
 \newif\if@aftertoc
 \@aftertocfalse
 \renewcommand{\tableofcontents}{%
         \chapter*{\contentsname}
         \@starttoc{toc}\@aftertoctrue%
 }
+
+%%=============================================================================
+%% Adicionar todos os tipos de seção, subseção, etc no sumário
+%%=============================================================================
+%\part            | -1 (book and report) 0 (article)
+%\chapter         | 0 (book and report only)
+%\section         | 1
+%\subsection      | 2
+%\subsubsection   | 3
+%\paragraph       | 4
+%\subparagraph    | 5
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
 
 %%=============================================================================
 %% Definição das listas de abreviaturas e siglas e de símbolos
@@ -584,7 +606,7 @@
     \@course\\
     \ufsm\\~\\
     \textbf{\MakeUppercase{\@title}}\\
-    \MakeUppercase{\authorname}:~\MakeUppercase{\@authora}\\
+    \MakeUppercase{\ifautora\authornamef\else\authorname\fi}:~\MakeUppercase{\@authora}\\
     \@ifundefined{@advisorwithouttitle}{}{\MakeUppercase{\iforientadora\advisornamef\else\advisorname\fi}:~\MakeUppercase{\@advisorwithouttitle}\\}
     \@ifundefined{@coadvisorwithouttitle}{}{\MakeUppercase{\ifcoorientadora\coadvisornamef\else\coadvisorname\fi}:~\MakeUppercase{\@coadvisorwithouttitle}\\}
     Local da Defesa e Data:~\@city,~\@date.\\~\\
@@ -612,7 +634,7 @@
     {#2}\\
     \ufsmIngles\\~\\
     \textbf{\MakeUppercase{#1}}\\
-    \MakeUppercase{\authorname}:~\MakeUppercase{\@authora}\\
+    \MakeUppercase{\ifautora\authornamef\else\authorname\fi}:~\MakeUppercase{\@authora}\\
     \@ifundefined{@advisorwithouttitle}{}{\MakeUppercase{\iforientadora\advisornamef\else\advisorname\fi}:~\MakeUppercase{\@advisorwithouttitle}\\}
     \@ifundefined{@coadvisorwithouttitle}{}{\MakeUppercase{\ifcoorientadora\coadvisornamef\else\coadvisorname\fi}:~\MakeUppercase{\@coadvisorwithouttitle}\\}
     Defense Place and Date:~\@city,~\dateingles{#3}{#4}.\\~\\
@@ -633,8 +655,8 @@
 \def\@chapter[#1]#2{%
         \refstepcounter{chapter}%
         \addcontentsline{toc}{chapter}{\protect\numberline{\@chapapp\thechapter}#1}%
-        \addtocontents{lof}{\protect\addvspace{10\p@}}%
-        \addtocontents{lot}{\protect\addvspace{10\p@}}%
+        \addtocontents{lof}{\protect\addvspace{0\p@}}%original = 10\p@ 
+        \addtocontents{lot}{\protect\addvspace{0\p@}}%
         \pagestyle{mdtufsm}\let\ps@plain\ps@mdtufsm%
         \@makechapterhead{#2}\@afterheading
 }
@@ -645,8 +667,8 @@
 }
 \def\@schapter#1{%
         \if@aftertoc\addcontentsline{toc}{chapter}{#1}\fi%
-        \addtocontents{lof}{\protect\addvspace{10\p@}}%
-        \addtocontents{lot}{\protect\addvspace{10\p@}}%
+        \addtocontents{lof}{\protect\addvspace{0\p@}}%Original = 10\p@
+        \addtocontents{lot}{\protect\addvspace{0\p@}}%
         \@makeschapterhead{#1}\@afterheading
 }
 \def\@makeschapterhead#1{%
