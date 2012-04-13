@@ -9,7 +9,8 @@
 % \documentclass[twoside]{mdtufsm}
 
 \usepackage[T1]{fontenc}        % pacote para conj. de caracteres correto
-\usepackage{times, color}       % pacote para usar fonte Adobe Times e cores
+\usepackage{fix-cm} %para funcionar corretamente o tamanho das fontes da capa
+\usepackage{times, color, xcolor}       % pacote para usar fonte Adobe Times e cores
 \usepackage[latin1]{inputenc}   % pacote para acentuação
 \usepackage{graphicx}  % pacote para importar figuras
 \usepackage{amsmath,latexsym,amssymb} %Pacotes matemáticos
@@ -40,6 +41,8 @@
 \title{Título da Dissertação ou Trabalho de Graduação Conforme a MDT 7ª Edição}
 
 \author{Sobrenome}{Nome Autor}
+%Descomentar se for uma "autora"
+%\autoratrue
 
 \course{Programa de Pós-Graduação em Informática}
 \altcourse{Programa de Pós-Graduação em Informática}
@@ -86,22 +89,16 @@
 %%=============================================================================
 %% Catalogação (obrigatório para mestrado) e Folha de aprovação
 %%=============================================================================
-%Somente obrigatório para dissertação, para TG, remover a linha
-%Na hora de gerar a catalogação na página da biblioteca da UFSM, colocar 1 página 
-%a mais referente a própria catalogação
-%\includeCIP{CIP.pdf}
+%Somente obrigatório para dissertação, para TG, remover as linhas	77	%
+%Como a CIP vai ser impressa atrás da página de rosto, as margens inner e outer	
+%devem ser invertidas.
+\newgeometry{inner=20mm,outer=30mm,top=30mm,bottom=20mm}	
+\makeCIP{nomedoautor@gmail.com} %email do autor		
+\restoregeometry
 
-%Somente obrigatório para dissertação, para TG, remover as linhas	77	%Somente obrigatório para dissertação, para TG, remover a linha
-%Como a CIP vai ser impressa atrás da página de rosto, as margens inner e outer	78	%Na hora de gerar a catalogação na página da biblioteca da UFSM, colocar 1 página
-%devem ser invertidas.	79	%a mais referente a própria catalogação
-%\newgeometry{inner=20mm,outer=30mm,top=30mm,bottom=20mm}	
-%\makeCIP		
-  %{XXXX} %cutter		
-  %{000.00} %CDU		
-  %{Nome do Bibliotecário - CRB-99/999} %Bibliotecatório que fez a CIP		
-  %{nomedoautor@gmail.com} %email do autor		
-%\restoregeometry
-\includeCIP{CIP.pdf}
+%Se for usar a catalogação gerada pelo gerador do site da biblioteca comentar as linhas
+%acima e utilizar o comando abaixo
+%\includeCIP{CIP.pdf}
 
 %folha de aprovação
 \makeapprove

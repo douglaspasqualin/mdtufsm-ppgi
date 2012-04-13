@@ -24,6 +24,7 @@
 \def\figurename{Figure}%
 \def\tablename{Table}%
 \def\authorname{Author}%
+\def\authornamef{Author}%
 \def\advisorname{Advisor}%
 \def\advisornamef{Advisor}%
 \def\coadvisorname{Coadvisor}%

@@ -24,6 +24,7 @@
 \def\figurename{Figura}%
 \def\tablename{Tabela}%
 \def\authorname{Autor}%
+\def\authornamef{Autora}%
 \def\advisorname{Orientador}%
 \def\advisornamef{Orientadora}%
 \def\coadvisorname{Co-orientador}%
