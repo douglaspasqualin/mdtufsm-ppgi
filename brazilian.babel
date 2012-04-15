@@ -5,11 +5,14 @@
 \def\bibname{Refer{\^e}ncias}%
 \def\abstractname{Resumo}%
 \def\appendixname{Ap{\^e}ndice}%
+\def\appendixsname{Ap{\^e}ndices}%
 \def\contentsname{Sum{\'a}rio}%
 \def\listfigurename{Lista de Figuras}%
 \def\listtablename{Lista de Tabelas}%
 \def\listdefname{Lista de Defini\c{c}\~{o}es}%
 \def\listtheoremsname{Lista de Teoremas}%
+\def\listappendixname{Lista de Ap{\^e}ndices}
+\def\listannexname{Lista de Anexos}
 \def\corollaryname{Corol\'{a}rio}%
 \def\propositionname{Proposi\c{c}\~{a}o}%
 \def\definitionname{Defini\c{c}\~{a}o}%
@@ -32,6 +35,7 @@
 \def\listabbrvname{Lista de Abreviaturas e Siglas}%
 \def\listsymbolname{Lista de S{\'\i}mbolos}%
 \def\annexname{Anexo}%
+\def\annexsname{Anexos}%
 \def\keywordsname{Palavras-chave}%
 \def\cipcaption{CIP -- CATALOGA{\c{C}}{\~A}O NA PUBLICA{\c{C}}{\~A}O}%
 \def\byname{por}%
