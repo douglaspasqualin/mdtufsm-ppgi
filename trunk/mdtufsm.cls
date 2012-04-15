@@ -144,6 +144,16 @@
 \newif\iforientadora
 \newif\ifcoorientadora
 
+\newif\ifchap\chaptrue
+\newif\ifappendix
+\newif\ifannex
+
+\newif\if@hyperLoaded\@hyperLoadedfalse
+\AtBeginDocument{\@ifpackageloaded{hyperref}{\@hyperLoadedtrue}{}}
+
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
 %%=============================================================================
 %% Herança da classe 'report' e inclusão de pacotes e arquivos necessários
 %%=============================================================================
@@ -159,6 +169,8 @@
 \RequirePackage{indentfirst} 
 \RequirePackage{natbib}
 \RequirePackage{eso-pic}
+\RequirePackage{color}
+
 
 %%=============================================================================
 %% Margens do texto
@@ -525,8 +537,7 @@
   \penalty\@highpenalty
   \endgroup
 }
-\renewcommand*{\l@section}[2]
-              {\@dottedtocline{1}{0em}{1.7em}{\textbf{#1}}{\hss #2}}
+\renewcommand*{\l@section}[2]{\@dottedtocline{1}{0em}{1.7em}{\textbf{#1}}{\hss #2}}
 \renewcommand*{\l@subsection}{\@dottedtocline{2}{0em}{2.4em}}
 \renewcommand*{\l@subsubsection}{\@dottedtocline{3}{0em}{3em}}
 \renewcommand*{\l@paragraph}{\@dottedtocline{4}{0em}{3.8em}}
@@ -589,7 +600,7 @@
 %%=============================================================================
 \renewenvironment{abstract}{%
   \chapter*{\abstractname}
-	\vspace{-1cm}
+	%\vspace{-1cm}
   \noindent\abstractheaderbox
   \indent
 	%\setlength{\baselineskip}{1.5\baselineskip}
@@ -618,7 +629,7 @@
         \gdef\@englishkeywords{#3}
         \begin{otherlanguage}{english}
           \chapter*{\abstractname}
-					\vspace{-1cm}
+				%	\vspace{-1cm}
           \noindent\englishabstractheaderbox{#1}{#2}{#4}{#5}
           \indent
 }{
@@ -650,64 +661,72 @@
 %% Os comandos \@makechapterhead e \@makeschapterhead fazem a
 %% formatação dos títulos propriamente ditos.
 %%=============================================================================
+
+        %  \settowidth{\ii@chapnumindent}{{\textbf{\@chapapp}}}
+        %  \addtolength{\ii@chapnumindent}{1.8em}
 \newcommand{\ii@chapterfont}{\@setfontsize\Large{14}{20}}
 \def\@chapapp{}
 \def\@chapter[#1]#2{%
         \refstepcounter{chapter}%
-        \addcontentsline{toc}{chapter}{\protect\numberline{\@chapapp\thechapter}#1}%
+        \ifchap\addcontentsline{toc}{chapter}{\protect\numberline{\@chapapp\thechapter}#1}\fi%
         \addtocontents{lof}{\protect\addvspace{0\p@}}%original = 10\p@ 
         \addtocontents{lot}{\protect\addvspace{0\p@}}%
         \pagestyle{mdtufsm}\let\ps@plain\ps@mdtufsm%
         \@makechapterhead{#2}\@afterheading
 }
-%Aqui alterei
 \def\@makechapterhead#1{%
-        \reset@font\noindent{\ii@chapterfont\centering\textbf{\@chapapp\thechapter\hspace{0.5em}\MakeUppercase{#1}}\par}
+        \ifchap
+          \reset@font\noindent{\ii@chapterfont\centering\textbf{\@chapapp\thechapter\hspace{0.5em}\MakeUppercase{#1}}\par}
+				\else
+				                      %\@setfontsize\Large{12}{20} se for o padrão da seção%
+				  \reset@font\noindent{\ii@chapterfont\centering\textbf{\MakeUppercase{\@chapapp}\thechapter\hspace{0.5em}-- #1}\par}
+				\fi
+				\ifappendix
+ 		      \addcontentsline{loap}{section}{\MakeUppercase{\@chapapp}\thechapter\hspace{0.5em}-- #1}
+				\fi
+				\ifannex
+					\addcontentsline{loan}{section}{\MakeUppercase{\@chapapp}\thechapter\hspace{0.5em}-- #1}
+				\fi
         \addvspace{25pt}
 }
 \def\@schapter#1{%
-        \if@aftertoc\addcontentsline{toc}{chapter}{#1}\fi%
+        \ifchap\if@aftertoc\addcontentsline{toc}{chapter}{#1}\fi\fi%
         \addtocontents{lof}{\protect\addvspace{0\p@}}%Original = 10\p@
         \addtocontents{lot}{\protect\addvspace{0\p@}}%
         \@makeschapterhead{#1}\@afterheading
 }
 \def\@makeschapterhead#1{%
         \reset@font\centerline{\ii@chapterfont\centering\textbf{\MakeUppercase{#1}}}
-        \addvspace{42pt}
+        \addvspace{25pt}
 }
-\renewcommand{\appendix}[1][\appendixname]{%
-        \setcounter{chapter}{0}%
-        \renewcommand{\thechapter}{\Alph{chapter}}%
-        \setcounter{tocdepth}{0}%
-        \@captionlistingfalse%
-        \gdef\@chapapp{\MakeUppercase{#1}\space}%
-        \addtocontents{toc}{%
-          \settowidth{\ii@chapnumindent}{{\textbf{\@chapapp}}}
-          \addtolength{\ii@chapnumindent}{1.8em}
-        }%
-}
-\newcommand{\annex}{\appendix[\annexname]}
+
 
 %%=============================================================================
 %% Formatação das seções
 %%=============================================================================
-\setcounter{secnumdepth}{4}
-\renewcommand{\section}{%name, level, indent, beforeskip, afterskip,style
-        \@startsection{section}{1}{0pt}{18pt}{18pt}{\reset@font\bfseries\@setfontsize\Large{12}{20}}
-}
-\renewcommand{\subsection}{%
-        \@startsection{subsection}{2}{0pt}{12pt}{18pt}{\reset@font\@setfontsize\Large{12}{20}}
-}
-\renewcommand{\subsubsection}{%
-        \@startsection{subsubsection}{3}{0pt}{12pt}{18pt}{\reset@font\@setfontsize\Large{12}{20}}
-}
-\renewcommand{\paragraph}{%
-        \@startsection{paragraph}{4}{0pt}{12pt}{18pt}{\reset@font\@setfontsize\Large{12}{20}}
-}
-\renewcommand{\subparagraph}{%
-        \@startsection{subparagraph}{5}{0pt}{1ex}{-1em}{\reset@font\@setfontsize\Large{12}{20}}
-}
-
+%\renewcommand{\section}{%name, level, indent, beforeskip, afterskip,style
+%        \@startsection{section}{1}{0pt}{18pt}{18pt}{\reset@font\bfseries\@setfontsize\Large{12}{20}}
+%}
+\renewcommand\section{\@startsection{section}{1}{0pt}%
+                                   {18pt}%
+                                   {18pt}%
+                                   {\reset@font\bfseries\@setfontsize\Large{12}{20}}}
+\renewcommand\subsection{\@startsection{subsection}{2}{0pt}%
+                                   {12pt}%
+                                   {18pt}%
+                                   {\reset@font\@setfontsize\Large{12}{20}}}																	
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{0pt}%
+                                   {12pt}%
+                                   {18pt}%
+                                   {\reset@font\@setfontsize\Large{12}{20}}}																																		
+\renewcommand\paragraph{\@startsection{paragraph}{4}{0pt}%
+                                   {12pt}%
+                                   {18pt}%
+                                   {\reset@font\@setfontsize\Large{12}{20}}}	
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{0pt}%
+                                   {1ex}%
+                                   {-1em}%
+                                   {\reset@font\@setfontsize\Large{12}{20}}}	
 %%=============================================================================
 %% Redefinição do conteúdo das listas de figuras e tabelas
 %%=============================================================================
@@ -757,3 +776,119 @@
 \setlength{\bibhang}{0pt}
 \let\cite\citep
 
+
+%%=============================================================================
+%% Formatação dos Apêndices 
+%%=============================================================================
+
+\newcommand{\appendixpage}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \thispagestyle{plain}%
+  \if@twocolumn\onecolumn\@tempswatrue\else\@tempswafalse\fi
+	\if@hyperLoaded
+	  \phantomsection
+	\fi
+  \null\vfil
+  \markboth{}{}%
+  {\centering
+   \interlinepenalty \@M
+   \normalfont
+   \Huge \bfseries \MakeUppercase\appendixsname \par \hspace{5.5cm}{\textcolor{gray}{\rule{10.5cm}{2.5mm}}}}%
+	 \addcontentsline{toc}{chapter}{\appendixsname}	
+  \vfil\newpage
+  \if@twoside
+    \if@openright
+      \null
+      \thispagestyle{empty}%
+      \newpage
+    \fi
+  \fi
+  \if@tempswa
+    \twocolumn
+  \fi
+}
+
+
+\renewcommand{\appendix}[1][\appendixname]{%
+        \chapfalse
+				\appendixtrue
+				\annexfalse
+				\appendixpage
+        \setcounter{chapter}{0}%
+				\setcounter{section}{0}%
+        \renewcommand{\thechapter}{\Alph{chapter}}%
+        \setcounter{tocdepth}{0}%
+        \@captionlistingfalse%
+        \gdef\@chapapp{#1\space}%
+}
+
+\newcommand\listofappendix{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listappendixname}%
+      \@mkboth{%
+          \MakeUppercase\listappendixname}%
+         {\MakeUppercase\listappendixname}%
+    \@starttoc{loap}%
+    \if@restonecol\twocolumn\fi
+}
+
+%%=============================================================================
+%% Formatação dos Anexos
+%%=============================================================================
+\newcommand{\annexpage}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \thispagestyle{plain}%
+  \if@twocolumn\onecolumn\@tempswatrue\else\@tempswafalse\fi
+	\if@hyperLoaded
+	  \phantomsection
+	\fi	
+  \null\vfil
+  \markboth{}{}%
+  {\centering
+   \interlinepenalty \@M
+   \normalfont
+   \Huge \bfseries \MakeUppercase\annexsname \par \hspace{6.2cm}{\textcolor{gray}{\rule{9.8cm}{2.5mm}}}}%
+	 \addcontentsline{toc}{chapter}{\annexsname}
+  \vfil\newpage
+  \if@twoside
+    \if@openright
+      \null
+      \thispagestyle{empty}%
+      \newpage
+    \fi
+  \fi
+  \if@tempswa
+    \twocolumn
+  \fi
+}	
+
+\newcommand{\annex}[1][\annexname]{%
+        \chapfalse
+				\appendixfalse
+				\annextrue
+				\annexpage
+        \setcounter{chapter}{0}%
+				\setcounter{section}{0}%
+        \renewcommand{\thechapter}{\Alph{chapter}}%
+        \setcounter{tocdepth}{0}%
+        \@captionlistingfalse%
+        \gdef\@chapapp{#1\space}%
+}
+
+\newcommand\listofannex{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listannexname}%
+      \@mkboth{%
+          \MakeUppercase\listannexname}%
+         {\MakeUppercase\listannexname}%
+    \@starttoc{loan}%
+    \if@restonecol\twocolumn\fi
+}	

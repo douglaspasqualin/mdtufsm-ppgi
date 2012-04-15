@@ -21,8 +21,7 @@
             pdfauthor={Nome Autor Sobrenome},
             pdfsubject={Dissertação de Mestrado},
             pdfkeywords={Dissertação, Modelo, LaTeX}
-            ]{hyperref} 
-%hidelinks disponível no pacote hyperref a partir da versão 2011-02-05  6.82a
+            ]{hyperref} %hidelinks disponível no pacote hyperref a partir da versão 2011-02-05  6.82a
 %Nesse caso, hidelinks retira os retângulos em volta dos links das referências
 
 %Margens conforme MDT 7ª edição, arrumar diretamente no mdtufsm.cls para funcionar a opção twoside *PENDENTE*
@@ -167,15 +166,24 @@ Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract
 %% Lista de Anexos e Apêndices (opc)
 
 %%=============================================================================
-%% Lista de figuras
+%% Lista de figuras (comentar se não houver)
 %%=============================================================================
-\listoffigures
+%\listoffigures
 
 %%=============================================================================
-%% Lista de tabelas
+%% Lista de tabelas (comentar se não houver)
 %%=============================================================================
 \listoftables
 
+%%=============================================================================
+%% Lista de Apêndices (comentar se não houver)
+%%=============================================================================
+\listofappendix
+
+%%=============================================================================
+%% Lista de Anexos (comentar se não houver)
+%%=============================================================================
+\listofannex
 
 %%=============================================================================
 %% Lista de abreviaturas e siglas
@@ -223,12 +231,17 @@ Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract
 \bibliography{referencias/referencias}
 
 
+
+%IMPORTANTE: Se precisar usar alguma seção ou subseção dentro dos apêndices ou
+%anexos, utilizar o comando \tocless para não adicionar no Sumário
+%Exemplos: 
+% \tocless\section{Histórico}
 %%=============================================================================
 %% Apêndices
 %%=============================================================================
 \appendix
 \include{capitulos/apendicea}
-
+\include{capitulos/apendiceb}
 
 %%=============================================================================
 %% Anexos
