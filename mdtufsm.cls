@@ -29,7 +29,7 @@
 %% Identificação
 %%=============================================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mdtufsm}[2012/04/12 v1.2.4a Formatacao de monografias, dissertacoes e teses da UFSM]
+\ProvidesClass{mdtufsm}[2012/04/15 v1.3 Formatacao de monografias, dissertacoes e teses da UFSM]
 
 %%=============================================================================
 %% Declaração de opções
