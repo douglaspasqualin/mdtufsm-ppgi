@@ -66,7 +66,7 @@
     \def\doctypename{Trabalho de Graduação}
     \def\doctypenameIngles{Undergraduate Final Work}
     \def\doctypearticle{o}
-	\def\doctypenameCIP{Monografia (Graduação)}
+	  \def\doctypenameCIP{Monografia (Graduação)}
   }
 
 }
@@ -82,10 +82,10 @@
     \def\doctypename{Dissertação de Mestrado}
     \def\doctypearticle{a}
     \def\doctypenameIngles{Master's Dissertation}
-	\def\doctypenameCIP{Dissertação (Mestrado)}
+	  \def\doctypenameCIP{Dissertação (Mestrado)}
   }
 }
-\DeclareOption{english}{\@englishtrue\OptionNotUsed}\newif\if@english
+\DeclareOption{english}{\@englishtrue\OptionNotUsed}\newif\if@english\@englishfalse
 % TODO: incluir opcao twoside
 \DeclareOption{oneside}{\AtEndOfClass{\@twosidefalse}\OptionNotUsed}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
@@ -168,9 +168,9 @@
 \RequirePackage{lastpage}
 \RequirePackage{indentfirst} 
 \RequirePackage{natbib}
-\RequirePackage{eso-pic}
+\RequirePackage{eso-pic}%para importar arquivos .pdf (catalogação \includeCIP{})
 \RequirePackage{color}
-
+\RequirePackage{fix-cm}%para funcionar corretamente o tamanho das fontes da capa
 
 %%=============================================================================
 %% Margens do texto
@@ -426,7 +426,7 @@
   \clearpage
   \mbox{} \vfill
   \@cipwindow
-  \newline \newline
+	\vspace{2ex}
   \nominata{#1}
   %se for impresso, não deve contar a página, pois será impressa no verso da folha de aprovação
   %\setcounter{page}{2}
@@ -452,7 +452,7 @@
     }
 
 \newcommand{\nominata}[1]{
- \vspace{2ex}
+ \vspace{3ex}
  % \noindent
  % Ficha catalográfica elaborada por \\
  % {#1} \\
@@ -606,7 +606,7 @@
 	%\setlength{\baselineskip}{1.5\baselineskip}
 }{%
   %\setlength{\baselineskip}{\baselineskip}
-  \par\vspace{1cm}
+  \par\vfill
   \noindent\textbf{\keywordsname:} \@abstractkw.
 }
 
@@ -633,7 +633,7 @@
           \noindent\englishabstractheaderbox{#1}{#2}{#4}{#5}
           \indent
 }{
-          \par\vspace{1cm}
+          \par\vfill
           \noindent\textbf{\keywordsname:} \@englishkeywords.
        \end{otherlanguage}
 }
@@ -892,3 +892,30 @@
     \@starttoc{loan}%
     \if@restonecol\twocolumn\fi
 }	
+
+%%=============================================================================
+%% Notas de rodapé
+%%=============================================================================
+
+% Numeração sequencial ao longo do texto
+\def\@removefromreset#1#2{{%
+  \expandafter\let\csname c@#1\endcsname\@removefromreset
+  \def\@elt##1{%
+    \expandafter\ifx\csname c@##1\endcsname\@removefromreset
+    \else
+      \noexpand\@elt{##1}%
+    \fi}%
+  \expandafter\xdef\csname cl@#2\endcsname{%
+    \csname cl@#2\endcsname}}}
+	
+\@removefromreset{footnote}{chapter}	
+
+% Filete de 3cm a partir da margem esquerda
+\renewcommand\footnoterule{%
+  \kern-3\p@
+  \hrule\@width.19\columnwidth
+  \kern2.6\p@}
+
+%Sem indentação o texto da nota de rodapé  
+\renewcommand\@makefntext[1]{%
+  \noindent\makebox[0.5em][r]{\@makefnmark}~~#1}
