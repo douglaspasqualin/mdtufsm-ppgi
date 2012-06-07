@@ -134,9 +134,9 @@
 }
 \location{Santa~Maria}{RS}{Brasil}
 
-\newcommand\LargeA{\@setfontsize\LargeA{18pt}{0}}
-\newcommand\LargeB{\@setfontsize\LargeB{16pt}{0}}
-\newcommand\LargeC{\@setfontsize\LargeC{14pt}{0}}
+\newcommand\LargeA{\@setfontsize\LargeA{18pt}{18.1pt}}
+\newcommand\LargeB{\@setfontsize\LargeB{16pt}{16.1pt}}
+\newcommand\LargeC{\@setfontsize\LargeC{14pt}{14.1pt}}
 
 %Para saber se é uma ``autora'' em vez de ``autor''
 \newif\ifautora
@@ -169,7 +169,7 @@
 \RequirePackage{indentfirst} 
 \RequirePackage{natbib}
 \RequirePackage{eso-pic}%para importar arquivos .pdf (catalogação \includeCIP{})
-\RequirePackage{color}
+\RequirePackage{color, xcolor}
 \RequirePackage{fix-cm}%para funcionar corretamente o tamanho das fontes da capa
 
 %%=============================================================================
@@ -482,7 +482,7 @@
 	  \vspace{2cm}
 	  \MakeUppercase{\LargeC\textbf{\@title}}\\
 	  \vspace{1,5cm}
-	  elaborad\doctypearticle~ por\\
+	  elaborad\doctypearticle~por\\
 	  \textbf{\@authora}\\
 	  \@ifundefined{@authorb}{}{\textbf{\@authorb}\\}%
 	  \@ifundefined{@authorc}{}{\textbf{\@authorc}\\}%
