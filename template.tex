@@ -1,82 +1,82 @@
 %\listfiles
 \documentclass[diss]{mdtufsm}
-% um tipo específico de monografia pode ser informado como parâmetro opcional:
+% um tipo especÃ­fico de monografia pode ser informado como parÃ¢metro opcional:
 %\documentclass[tese]{mdtufsm}
-% a opção `openright' pode ser usada para forçar inícios de capítulos
-% em páginas ímpares
+% a opÃ§Ã£o `openright' pode ser usada para forÃ§ar inÃ­cios de capÃ­tulos
+% em pÃ¡ginas Ã­mpares
 % \documentclass[openright]{mdtufsm}
-% para gerar uma versão frente-e-verso, use a opção 'twoside':
+% para gerar uma versÃ£o frente-e-verso, use a opÃ§Ã£o 'twoside':
 % \documentclass[twoside]{mdtufsm}
 
 \usepackage[T1]{fontenc}        % pacote para conj. de caracteres correto
 \usepackage{fix-cm} %para funcionar corretamente o tamanho das fontes da capa
 \usepackage{times, color, xcolor}       % pacote para usar fonte Adobe Times e cores
-\usepackage[latin1]{inputenc}   % pacote para acentuação
+\usepackage[utf8]{inputenc}   % pacote para acentuaÃ§Ã£o
 \usepackage{graphicx}  % pacote para importar figuras
-\usepackage{amsmath,latexsym,amssymb} %Pacotes matemáticos
+\usepackage{amsmath,latexsym,amssymb} %Pacotes matemÃ¡ticos
 \usepackage[%hidelinks%, 
             bookmarksopen=true,linktoc=none,colorlinks=true,
             linkcolor=black,citecolor=black,filecolor=magenta,urlcolor=blue,
-            pdftitle={Título da Dissertação ou Trabalho ....},
+            pdftitle={TÃ­tulo da DissertaÃ§Ã£o ou Trabalho ....},
             pdfauthor={Nome Autor Sobrenome},
-            pdfsubject={Dissertação de Mestrado},
-            pdfkeywords={Dissertação, Modelo, LaTeX}
-            ]{hyperref} %hidelinks disponível no pacote hyperref a partir da versão 2011-02-05  6.82a
-%Nesse caso, hidelinks retira os retângulos em volta dos links das referências
+            pdfsubject={DissertaÃ§Ã£o de Mestrado},
+            pdfkeywords={DissertaÃ§Ã£o, Modelo, LaTeX}
+            ]{hyperref} %hidelinks disponÃ­vel no pacote hyperref a partir da versÃ£o 2011-02-05  6.82a
+%Nesse caso, hidelinks retira os retÃ¢ngulos em volta dos links das referÃªncias
 
-%Margens conforme MDT 7ª edição, arrumar diretamente no mdtufsm.cls para funcionar a opção twoside *PENDENTE*
+%Margens conforme MDT 7Âª ediÃ§Ã£o, arrumar diretamente no mdtufsm.cls para funcionar a opÃ§Ã£o twoside *PENDENTE*
 \usepackage[inner=30mm,outer=20mm,top=30mm,bottom=20mm]{geometry} 
 
 %==============================================================================
 % Se o pacote hyperref foi carregado a linha abaixo corrige um bug na hora
-% de montar o sumário da lista de figuras e tabelas
-% Se o pacote não foi carregado, comentar a linha %
+% de montar o sumÃ¡rio da lista de figuras e tabelas
+% Se o pacote nÃ£o foi carregado, comentar a linha %
 %==============================================================================
 \input{macros/bugcaption}
 
 %==============================================================================
-% Identificação do trabalho
+% IdentificaÃ§Ã£o do trabalho
 %==============================================================================
-\title{Título da Dissertação ou Trabalho de Graduação Conforme a MDT 7ª Edição}
+\title{TÃ­tulo da DissertaÃ§Ã£o ou Trabalho de GraduaÃ§Ã£o Conforme a MDT 7Âª EdiÃ§Ã£o}
 
 \author{Sobrenome}{Nome Autor}
 %Descomentar se for uma "autora"
 %\autoratrue
 
-\course{Programa de Pós-Graduação em Informática}
-\altcourse{Programa de Pós-Graduação em Informática}
+\course{Programa de PÃ³s-GraduaÃ§Ã£o em InformÃ¡tica}
+\altcourse{Programa de PÃ³s-GraduaÃ§Ã£o em InformÃ¡tica}
 
 \institute{Centro de Tecnologia}
-\degree{Mestre em Ciência da Computação}
+\degree{Mestre em CiÃªncia da ComputaÃ§Ã£o}
 
-% Número do TG (verificar na secretaria do curso)
-% Para mestrado deixar sem opção dentro do {}
+% NÃºmero do TG (verificar na secretaria do curso)
+% Para mestrado deixar sem opÃ§Ã£o dentro do {}
 \trabalhoNumero{}
 
 %Orientador
-\advisor[Profª.]{Dr.}{Silva}{João da}
+\advisor[ProfÂª.]{Dr.}{Silva}{JoÃ£o da}
 %Se for uma ``orientadora'' descomentar a linha baixo
 %\orientadoratrue
 
-%Co orientador, comentar se não existir
-\coadvisor[Prof.]{Drª.}{Pereira}{Maria Regina}
+%Co orientador, comentar se nÃ£o existir
+\coadvisor[Prof.]{DrÂª.}{Pereira}{Maria Regina}
 \coorientadoratrue %Se for uma ``Co-Orientadora''
 
 %Avaliadores (Banca)
 \committee[Dr.]{Sobrenome}{Fulano}{UFSM}
 \committee[Dr.]{Sobrenome2}{Fulano2}{INPE}
 
-% a data deve ser a da defesa; se nao especificada, são gerados
+% a data deve ser a da defesa; se nao especificada, sÃ£o gerados
 % mes e ano correntes
-\date{01}{Março}{2011}
+\date{01}{MarÃ§o}{2011}
 
 %Palavras chave
-\keyword{Dissertação} 
+\keyword{DissertaÃ§Ã£o} 
 \keyword{Modelo}
 \keyword{LaTeX}
 
 %%=============================================================================
-%% Início do documento
+%% InÃ­cio do documento
 %%=============================================================================
 \begin{document}
 
@@ -86,46 +86,46 @@
 \maketitle
 
 %%=============================================================================
-%% Catalogação (obrigatório para mestrado) e Folha de aprovação
+%% CatalogaÃ§Ã£o (obrigatÃ³rio para mestrado) e Folha de aprovaÃ§Ã£o
 %%=============================================================================
-%Somente obrigatório para dissertação, para TG, remover as linhas	77	%
-%Como a CIP vai ser impressa atrás da página de rosto, as margens inner e outer	
+%Somente obrigatÃ³rio para dissertaÃ§Ã£o, para TG, remover as linhas	77	%
+%Como a CIP vai ser impressa atrÃ¡s da pÃ¡gina de rosto, as margens inner e outer	
 %devem ser invertidas.
 \newgeometry{inner=20mm,outer=30mm,top=30mm,bottom=20mm}	
 \makeCIP{nomedoautor@gmail.com} %email do autor		
 \restoregeometry
 
-%Se for usar a catalogação gerada pelo gerador do site da biblioteca comentar as linhas
+%Se for usar a catalogaÃ§Ã£o gerada pelo gerador do site da biblioteca comentar as linhas
 %acima e utilizar o comando abaixo
 %\includeCIP{CIP.pdf}
 
-%folha de aprovação
+%folha de aprovaÃ§Ã£o
 \makeapprove
 
 %%=============================================================================
-%% Dedicatória (opcional)
+%% DedicatÃ³ria (opcional)
 %%=============================================================================
 \clearpage
 \begin{flushright}
 \mbox{}\vfill
-{\sffamily\itshape À UFSM ......}
+{\sffamily\itshape Ã€ UFSM ......}
 \end{flushright}
 
 %%=============================================================================
 %% Agradecimentos (opcional)
 %%=============================================================================
 \chapter*{Agradecimentos}
-Obrigado ao \LaTeX por facilitar a digitação do trabalho
+Obrigado ao \LaTeX por facilitar a digitaÃ§Ã£o do trabalho
 
 
 %%=============================================================================
-%% Epígrafe (opcional)
+%% EpÃ­grafe (opcional)
 %%=============================================================================
 \clearpage
 \begin{flushright}
 \mbox{}\vfill
 {\sffamily\itshape
-``Frase da epígrafe'' \\ }
+``Frase da epÃ­grafe'' \\ }
 --- \textsc{Autor da frase}
 \end{flushright}
 
@@ -134,21 +134,21 @@ Obrigado ao \LaTeX por facilitar a digitação do trabalho
 %% Resumo
 %%=============================================================================
 \begin{abstract}
-Este é o resumo do trabalho ... Este é o resumo do trabalho ...
-Este é o resumo do trabalho ... Este é o resumo do trabalho ...
-Este é o resumo do trabalho ... Este é o resumo do trabalho ...
-Este é o resumo do trabalho ... Este é o resumo do trabalho ...
-Este é o resumo do trabalho ... Este é o resumo do trabalho ...
-Este é o resumo do trabalho ... Este é o resumo do trabalho ...
+Este Ã© o resumo do trabalho ... Este Ã© o resumo do trabalho ...
+Este Ã© o resumo do trabalho ... Este Ã© o resumo do trabalho ...
+Este Ã© o resumo do trabalho ... Este Ã© o resumo do trabalho ...
+Este Ã© o resumo do trabalho ... Este Ã© o resumo do trabalho ...
+Este Ã© o resumo do trabalho ... Este Ã© o resumo do trabalho ...
+Este Ã© o resumo do trabalho ... Este Ã© o resumo do trabalho ...
 \end{abstract}
 
 %%=============================================================================
 %% Abstract
 %%=============================================================================
-% resumo na outra língua
+% resumo na outra lÃ­ngua
 % como parametros devem ser passados o titulo, o nome do curso,
-% as palavras-chave na outra língua, separadas por vírgulas, o mês em inglês
-%o a sigla do dia em inglês: st, nd, th ...
+% as palavras-chave na outra lÃ­ngua, separadas por vÃ­rgulas, o mÃªs em inglÃªs
+%o a sigla do dia em inglÃªs: st, nd, th ...
 \begin{englishabstract}
 {Dissertation Title}
 {Post-Graduate Program in Informatics}
@@ -161,27 +161,27 @@ Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract
 Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...
 \end{englishabstract}
 
-%% Lista de Ilustrações (opc)
-%% Lista de Símbolos (opc)
-%% Lista de Anexos e Apêndices (opc)
+%% Lista de IlustraÃ§Ãµes (opc)
+%% Lista de SÃ­mbolos (opc)
+%% Lista de Anexos e ApÃªndices (opc)
 
 %%=============================================================================
-%% Lista de figuras (comentar se não houver)
+%% Lista de figuras (comentar se nÃ£o houver)
 %%=============================================================================
 %\listoffigures
 
 %%=============================================================================
-%% Lista de tabelas (comentar se não houver)
+%% Lista de tabelas (comentar se nÃ£o houver)
 %%=============================================================================
 \listoftables
 
 %%=============================================================================
-%% Lista de Apêndices (comentar se não houver)
+%% Lista de ApÃªndices (comentar se nÃ£o houver)
 %%=============================================================================
 \listofappendix
 
 %%=============================================================================
-%% Lista de Anexos (comentar se não houver)
+%% Lista de Anexos (comentar se nÃ£o houver)
 %%=============================================================================
 \listofannex
 
@@ -191,7 +191,7 @@ Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract
  %o parametro deve ser a abreviatura mais longa
 \begin{listofabbrv}{UbiComp}
    \item [BNF] \textit{Backus-Naur Form}
-   \item [UbiComp] Computação Ubíqua
+   \item [UbiComp] ComputaÃ§Ã£o UbÃ­qua
 \end{listofabbrv}
 
 
@@ -199,7 +199,7 @@ Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract
 %% Lista de simbolos (opcional)
 %%=============================================================================
 %Simbolos devem aparecer conforme a ordem em que aparecem no texto
-% o parametro deve ser o símbolo mais longo
+% o parametro deve ser o sÃ­mbolo mais longo
 \begin{listofsymbols}{teste}
   \item [$\varnothing$] vazio
   \item [$\Gamma$]  Gama
@@ -207,13 +207,13 @@ Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract
 \end{listofsymbols}
 
 %%=============================================================================
-%% Sumário
+%% SumÃ¡rio
 %%=============================================================================
 \tableofcontents
 
 
 %%=============================================================================
-%% Início da dissertação
+%% InÃ­cio da dissertaÃ§Ã£o
 %%=============================================================================
 \setlength{\baselineskip}{1.5\baselineskip}
 
@@ -225,19 +225,19 @@ Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract ...Abstract
 \setlength{\baselineskip}{\baselineskip}
 
 %%=============================================================================
-%% Referências
+%% ReferÃªncias
 %%=============================================================================
 \bibliographystyle{abnt}
 \bibliography{referencias/referencias}
 
 
 
-%IMPORTANTE: Se precisar usar alguma seção ou subseção dentro dos apêndices ou
-%anexos, utilizar o comando \tocless para não adicionar no Sumário
+%IMPORTANTE: Se precisar usar alguma seÃ§Ã£o ou subseÃ§Ã£o dentro dos apÃªndices ou
+%anexos, utilizar o comando \tocless para nÃ£o adicionar no SumÃ¡rio
 %Exemplos: 
-% \tocless\section{Histórico}
+% \tocless\section{HistÃ³rico}
 %%=============================================================================
-%% Apêndices
+%% ApÃªndices
 %%=============================================================================
 \appendix
 \include{capitulos/apendicea}

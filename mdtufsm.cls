@@ -1,5 +1,5 @@
 %%=============================================================================
-%% mdtufsm.cls - Classe para formataÁ„o de MDT da UFSM
+%% mdtufsm.cls - Classe para formata√ß√£o de MDT da UFSM
 %%
 %% This program is free software; you can redistribute it and/or modify
 %% it under the terms of the GNU General Public License as published by
@@ -15,24 +15,24 @@
 %% along with this program; if not, write to the Free Software
 %% Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 %%
-%% Esta classe È uma adaptaÁ„o de iiufrgs.cls, contida pacote iiufrgs-4.3.1, 
+%% Esta classe √© uma adapta√ß√£o de iiufrgs.cls, contida pacote iiufrgs-4.3.1, 
 %% desenvolvido pelo UFRGS TeX Users Group (http://www.inf.ufrgs.br/utug).
 %%
-%% A formataÁ„o de documentos segue as recomendaÁıes contidas na
-%% Estrutura e ApresentaÁ„o de Monografias, DissertaÁıes e Teses - MDT, 
-%% 7a. ediÁ„o, 2010, disponÌvel em: 
+%% A formata√ß√£o de documentos segue as recomenda√ß√µes contidas na
+%% Estrutura e Apresenta√ß√£o de Monografias, Disserta√ß√µes e Teses - MDT, 
+%% 7a. edi√ß√£o, 2010, dispon√≠vel em: 
 %% http://w3.ufsm.br/prpgp/wp-content/uploads/2011/02/MDT_revisada_-%C3%BAltima-vers%C3%A3o.pdf
 %% 
 %%=============================================================================
 
 %%=============================================================================
-%% IdentificaÁ„o
+%% Identifica√ß√£o
 %%=============================================================================
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{mdtufsm}[2012/04/15 v1.3.1a Formatacao de monografias, dissertacoes e teses da UFSM]
 
 %%=============================================================================
-%% DeclaraÁ„o de opÁıes
+%% Declara√ß√£o de op√ß√µes
 %%=============================================================================
 \DeclareOption{tese}{
   \AtEndOfClass{
@@ -50,9 +50,9 @@
       obten{\c{c}}{\~a}o do grau de\\[6pt]
       \textbf{\@degree}
     }
-    \def\doctypename{Monografia de EspecializaÁ„o}
+    \def\doctypename{Monografia de Especializa{\c{c}}{\~a}o}
     \def\doctypearticle{a}
-    \def\doctypenameCIP{Monografia (EspecializaÁ„o)}	
+    \def\doctypenameCIP{Monografia (Especializa{\c{c}}{\~a}o)}	
   }
 }
 \DeclareOption{tg}{
@@ -63,26 +63,26 @@
       obten{\c{c}}{\~a}o do grau de\\[6pt]
       \textbf{\@degree}
     }
-    \def\doctypename{Trabalho de GraduaÁ„o}
+    \def\doctypename{Trabalho de Gradua{\c{c}}{\~a}o}
     \def\doctypenameIngles{Undergraduate Final Work}
     \def\doctypearticle{o}
-	  \def\doctypenameCIP{Monografia (GraduaÁ„o)}
+	  \def\doctypenameCIP{Monografia (Gradua{\c{c}}{\~a}o)}
   }
 
 }
 \DeclareOption{diss}{
   \AtEndOfClass{
     \newcommand{\titlepagespecificinfo}{
-        Disserta{\c{c}}{\~a}o apresentada ao Curso de Mestrado do %em Computa{\c{c}}{\~a}o
-        Programa de \\ PÛs-GraduaÁ„o em Inform·tica (PPGI), ¡rea de ConcentraÁ„o em  Computa{\c{c}}{\~a}o,  
-%        do \@altcourse{}, ¡rea de ConcentraÁ„o em Computa{\c{c}}{\~a}o, 
+        Disserta{\c{c}}{\~a}o apresentada ao Curso de Mestrado %em Computa{\c{c}}{\~a}o
+        Programa de \\ P\'{o}s-Gradua{\c{c}}{\~a}o em Inform\'{a}tica (PPGI), \'{A}rea de Concentra{\c{c}}{\~a}o em Computa{\c{c}}{\~a}o,  
+%        do \@altcourse{}, \'{A}rea de Concentra{\c{c}}{\~a}o em Computa{\c{c}}{\~a}o, 
         da \ufsm{} (UFSM, RS), \\ como requisito parcial para obten{\c{c}}{\~a}o do grau de\\[6pt]
       \textbf{\@degree}
     }
-    \def\doctypename{DissertaÁ„o de Mestrado}
+    \def\doctypename{Disserta{\c{c}}{\~a}o de Mestrado}
     \def\doctypearticle{a}
     \def\doctypenameIngles{Master's Dissertation}
-	  \def\doctypenameCIP{DissertaÁ„o (Mestrado)}
+	  \def\doctypenameCIP{Disserta{\c{c}}{\~a}o (Mestrado)}
   }
 }
 \DeclareOption{english}{\@englishtrue\OptionNotUsed}\newif\if@english\@englishfalse
@@ -92,30 +92,30 @@
 \ProcessOptions\relax
 
 
-%% DissertaÁ„o apresentada ao Curso de Mestrado do Programa de
-%% PÛs-GraduaÁ„o em Engenharia de ProduÁ„o, ¡rea de ConcentraÁ„o em
-%% Tecnologia da InformaÁ„o, da Universidade Federal de Santa Maria (UFSM, RS),
-%% como requisito parcial para obtenÁ„o do grau de
-%% Mestre em Engenharia de ProduÁ„o.
+%% Disserta√ß√£o apresentada ao Curso de Mestrado do Programa de
+%% P√≥s-Gradua√ß√£o em Engenharia de Produ√ß√£o, √Årea de Concentra√ß√£o em
+%% Tecnologia da Informa√ß√£o, da Universidade Federal de Santa Maria (UFSM, RS),
+%% como requisito parcial para obten√ß√£o do grau de
+%% Mestre em Engenharia de Produ√ß√£o.
 
 
-%% DissertaÁ„o apresentada ao Curso de Mestrado em ComputaÁ„o do Programa de
-%% PÛs-GraduaÁ„o em Inform·tica da Universidade Federal de Santa Maria (UFSM, RS),
-%% como requisito parcial para obtenÁ„o do grau de
-%% Mestre em ComputaÁ„o.
+%% Disserta√ß√£o apresentada ao Curso de Mestrado em Computa√ß√£o do Programa de
+%% P√≥s-Gradua√ß√£o em Inform√°tica da Universidade Federal de Santa Maria (UFSM, RS),
+%% como requisito parcial para obten√ß√£o do grau de
+%% Mestre em Computa√ß√£o.
 
-%% Monografia apresentada ao Curso de EspecializaÁ„o em Sistemas
-%% de ComputaÁ„o para a Web do Programa de PÛs-GraduaÁ„o em Inform·tica
+%% Monografia apresentada ao Curso de Especializa√ß√£o em Sistemas
+%% de Computa√ß√£o para a Web do Programa de P√≥s-Gradua√ß√£o em Inform√°tica
 %% da Universidade Federal de Santa Maria (UFSM, RS),
-%% como requisito parcial para obtenÁ„o do grau de
-%% Especialista em Sistemas de ComputaÁ„o para a Web.
+%% como requisito parcial para obten√ß√£o do grau de
+%% Especialista em Sistemas de Computa√ß√£o para a Web.
 
 
-%% Trabalho de GraduaÁ„o apresentado ao Curso de CiÍncia da ComputaÁ„o -- Bacharelado da Universidade Federal de Santa Maria (UFSM, RS), como requisito parcial para obtenÁ„o do grau de Bacharel em CiÍncia da ComputaÁ„o.
+%% Trabalho de Gradua√ß√£o apresentado ao Curso de Ci√™ncia da Computa√ß√£o -- Bacharelado da Universidade Federal de Santa Maria (UFSM, RS), como requisito parcial para obten√ß√£o do grau de Bacharel em Ci√™ncia da Computa√ß√£o.
 
 
 %%=============================================================================
-%% Comandos e definiÁıes gerais
+%% Comandos e defini√ß√µes gerais
 %%=============================================================================
 \def\ufsm{Universidade Federal de Santa Maria}
 \def\ufsmIngles{Federal University of Santa Maria} 
@@ -138,9 +138,9 @@
 \newcommand\LargeB{\@setfontsize\LargeB{16pt}{16.1pt}}
 \newcommand\LargeC{\@setfontsize\LargeC{14pt}{14.1pt}}
 
-%Para saber se È uma ``autora'' em vez de ``autor''
+%Para saber se √© uma ``autora'' em vez de ``autor''
 \newif\ifautora
-%Para saber se È ``orientadora'' em vez de ``orientador''
+%Para saber se √© ``orientadora'' em vez de ``orientador''
 \newif\iforientadora
 \newif\ifcoorientadora
 
@@ -155,12 +155,12 @@
 \newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
 
 %%=============================================================================
-%% HeranÁa da classe 'report' e inclus„o de pacotes e arquivos necess·rios
+%% Heran√ßa da classe 'report' e inclus√£o de pacotes e arquivos necess√°rios
 %%=============================================================================
 \LoadClass[12pt,a4paper,oneside]{report}
 \RequirePackage[english,brazilian]{babel}
-\input{brazilian.babel} % definiÁıes para textos em portuguÍs
-\input{english.babel}   % definiÁıes para textos em inglÍs
+\input{brazilian.babel} % defini√ß√µes para textos em portugu√™s
+\input{english.babel}   % defini√ß√µes para textos em ingl√™s
 \if@english
         \selectlanguage{english}
         \AtBeginDocument{\selectlanguage{english}}
@@ -168,7 +168,7 @@
 \RequirePackage{lastpage}
 \RequirePackage{indentfirst} 
 \RequirePackage{natbib}
-\RequirePackage{eso-pic}%para importar arquivos .pdf (catalogaÁ„o \includeCIP{})
+\RequirePackage{eso-pic}%para importar arquivos .pdf (cataloga√ß√£o \includeCIP{})
 \RequirePackage{color, xcolor}
 \RequirePackage{fix-cm}%para funcionar corretamente o tamanho das fontes da capa
 
@@ -184,7 +184,7 @@
 
 % ajuste das medidas verticais
 \setlength{\topmargin}{\mdt@pagenummargin}
-        \addtolength{\topmargin}{-1em} % isto È +- a altura do n˙m. da p·gina
+        \addtolength{\topmargin}{-1em} % isto √© +- a altura do n√∫m. da p√°gina
         \addtolength{\topmargin}{-1in}
 \setlength{\headheight}{1em}
 \setlength{\headsep}{\mdt@topmargin}
@@ -204,11 +204,11 @@
         \addtolength{\marginparsep}{-\marginparwidth}
         \setlength{\marginparsep}{.5\marginparsep}
 
-%indentar em 1,25 o primeiro par·grafo
+%indentar em 1,25 o primeiro par√°grafo
 \setlength{\parindent}{1.25cm}%
 
 %%=============================================================================
-%% NumeraÁ„o das p·ginas
+%% Numera√ß√£o das p√°ginas
 %%=============================================================================
 \def\ps@mdtufsm{
         \let\@oddfoot\@empty
@@ -220,7 +220,7 @@
 \let\ps@plain\ps@empty
 
 %%=============================================================================
-%% DefiniÁ„o de autor(es), orientador, co-orientador e banca examinadora
+%% Defini√ß√£o de autor(es), orientador, co-orientador e banca examinadora
 %%=============================================================================
 \newcounter{ii@authorcount}
 \renewcommand{\author}[2]{
@@ -254,7 +254,7 @@
 
 
 %%=============================================================================
-%% DefiniÁ„o das palavras-chave (m·x. 10)
+%% Defini√ß√£o das palavras-chave (m√°x. 10)
 %%=============================================================================
 \newcounter{kwcounter}
 \newcommand{\keyword}[1]{
@@ -287,7 +287,7 @@
 }
 
 %%=============================================================================
-%% RedefiniÁ„o da data (para ter dia, mÍs e ano separados)
+%% Redefini√ß√£o da data (para ter dia, m√™s e ano separados)
 %%=============================================================================
 \renewcommand{\date}[3]{
   \gdef\@publday{#1}
@@ -299,10 +299,10 @@
 \newcommand{\dateingles}[2]{{#1} $\text{\@publday}^{\text{#2}}$, \@publyear}
 
 %%=============================================================================
-%% DefiniÁıes comuns ‡ capa e ‡ folha de rosto.
-%% Os dados especÌficos do tipo de trabalho (dissertaÁ„o, tese, etc.) s„o
+%% Defini√ß√µes comuns √† capa e √† folha de rosto.
+%% Os dados espec√≠ficos do tipo de trabalho (disserta√ß√£o, tese, etc.) s√£o
 %% informados definindo-se o comando \titlepagespecificinfo. Veja os
-%% arquivos .def incluÌdos com a classe.
+%% arquivos .def inclu√≠dos com a classe.
 %%=============================================================================
 \newlength{\titlepagewinwidth}\setlength{\titlepagewinwidth}{135mm}
 \newlength{\titlepagewinheight}\setlength{\titlepagewinheight}{70mm}
@@ -325,7 +325,7 @@
 %%=============================================================================
 \newcommand{\thetitlepage}{ 
   \noindent
-  % cabeÁalho
+  % cabe√ßalho
   \parbox[t]{\textwidth}{
     \centering
     \vbox to \titlepagewinvoffset{
@@ -334,7 +334,7 @@
       {\LargeC\textbf{\MakeUppercase{\@course}}}\\
     }
     \vfill
-    % tÌtulo
+    % t√≠tulo
     \parbox[b]{\titlepagewinwidth}{%
       \centering
       \vbox to \titlepagewinheight{%
@@ -399,7 +399,7 @@
 
 
 %%=============================================================================
-%% DefiniÁ„o padr„o da folha de aprovacao e CIP
+%% Defini√ß√£o padr√£o da folha de aprovacao e CIP
 %%=============================================================================
 \newcommand{\makeapprove}{%
   \clearpage
@@ -428,7 +428,7 @@
   \@cipwindow
 	\vspace{2ex}
   \nominata{#1}
-  %se for impresso, n„o deve contar a p·gina, pois ser· impressa no verso da folha de aprovaÁ„o
+  %se for impresso, n√£o deve contar a p√°gina, pois ser√° impressa no verso da folha de aprova√ß√£o
   %\setcounter{page}{2}
 }
 
@@ -454,18 +454,18 @@
 \newcommand{\nominata}[1]{
  \vspace{3ex}
  % \noindent
- % Ficha catalogr·fica elaborada por \\
+ % Ficha catalogr√°fica elaborada por \\
  % {#1} \\
  % Biblioteca Central da UFSM \\
   \hrule
   \vskip 10\p@
   \noindent \copyright \ \@publyear \\
-  Todos os direitos autorais reservados a \@authora. A reproduÁ„o de partes ou do todo deste trabalho sÛ poder· ser feita mediante a citaÁ„o da fonte. \\
+  Todos os direitos autorais reservados a \@authora. A reprodu{\c{c}}{\~a}o de partes ou do todo deste trabalho s\'{o} poder\'{a} ser feita mediante a cita{\c{c}}{\~a}o da fonte. \\
   E-mail: {#1}
 }
 
 \newcommand{\includeCIP}[1]{
-   %impresso no verso da folha de rosto, nesse cao n„o deve contar a p·gina
+   %impresso no verso da folha de rosto, nesse caso n√£o deve contar a p√°gina
    %\setcounter{page}{1}
    \clearpage\mbox{}
    \AddToShipoutPicture{\includegraphics{#1}}
@@ -488,7 +488,7 @@
 	  \@ifundefined{@authorc}{}{\textbf{\@authorc}\\}%
 	  \@ifundefined{@authord}{}{\textbf{\@authord}\\}%
 	  \vspace{1.5cm}
-		 {como requisito parcial para obtenÁ„o do grau de} \\
+		 {como requisito parcial para obten{\c{c}}{\~a}o do grau de} \\
 		 \textbf{\@degree}  
   }
 }
@@ -497,7 +497,7 @@
 
 \newcommand{\approvecommitteeinfo}{%
   \parbox[t]{\textwidth}{
-    \centerline{\LargeC\textbf{COMISS√O EXAMINADORA:}}
+    \centerline{\LargeC\textbf{COMISS\~{A}O EXAMINADORA:}}
     \vfill
     \vspace{1,2cm}
     \@ifundefined{@advisorcommittee}{}{\normalsize\centerline{\textbf{\@advisorcommittee}}}
@@ -516,7 +516,7 @@
 
 
 %%=============================================================================
-%% Ajuste do sum·rio (sem indentaÁ„o) 
+%% Ajuste do sum√°rio (sem indenta√ß√£o) 
 %%=============================================================================
 \newlength{\ii@chapnumindent}\setlength{\ii@chapnumindent}{1 em}
 \renewcommand\@dotsep{1.5}
@@ -530,7 +530,7 @@
   \leavevmode\bfseries
   \advance\leftskip\@tempdima
   \hskip -\leftskip
-  %      esta È a definicao original da classe report:
+  %      esta √© a definicao original da classe report:
   %      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
   \@dottedtocline{0}{0em}{\ii@chapnumindent}{\MakeUppercase{#1}}{#2}
   %        \@dottedtocline{0}{0em}{\ii@chapnumindent}{\MakeUppercase{#1}}{#2}
@@ -549,7 +549,7 @@
 }
 
 %%=============================================================================
-%% Adicionar todos os tipos de seÁ„o, subseÁ„o, etc no sum·rio
+%% Adicionar todos os tipos de se√ß√£o, subse√ß√£o, etc no sum√°rio
 %%=============================================================================
 %\part            | -1 (book and report) 0 (article)
 %\chapter         | 0 (book and report only)
@@ -562,7 +562,7 @@
 \setcounter{tocdepth}{5}
 
 %%=============================================================================
-%% DefiniÁ„o das listas de abreviaturas e siglas e de sÌmbolos
+%% Defini√ß√£o das listas de abreviaturas e siglas e de s√≠mbolos
 %%=============================================================================
 \newenvironment{listofabbrv}[1]{
         \chapter*{\listabbrvname}
@@ -653,13 +653,13 @@
 }
 
 %%=============================================================================
-%% FormataÁ„o dos capÌtulos.
-%% Os comandos \@chapter e \@schapter s„o redefinidos para que a
-%% numeraÁ„o de p·ginas seja correta (deve aparecer somente a partir do
-%% primeiro capÌtulo do texto, mas n„o nas p·ginas iniciais de
-%% capÌtulos).
+%% Formata√ß√£o dos cap√≠tulos.
+%% Os comandos \@chapter e \@schapter s√£o redefinidos para que a
+%% numera√ß√£o de p√°ginas seja correta (deve aparecer somente a partir do
+%% primeiro cap√≠tulo do texto, mas n√£o nas p√°ginas iniciais de
+%% cap√≠tulos).
 %% Os comandos \@makechapterhead e \@makeschapterhead fazem a
-%% formataÁ„o dos tÌtulos propriamente ditos.
+%% formata√ß√£o dos t√≠tulos propriamente ditos.
 %%=============================================================================
 
         %  \settowidth{\ii@chapnumindent}{{\textbf{\@chapapp}}}
@@ -678,7 +678,7 @@
         \ifchap
           \reset@font\noindent{\ii@chapterfont\centering\textbf{\@chapapp\thechapter\hspace{0.5em}\MakeUppercase{#1}}\par}
 				\else
-				                      %\@setfontsize\Large{12}{20} se for o padr„o da seÁ„o%
+				                      %\@setfontsize\Large{12}{20} se for o padr√£o da se√ß√£o%
 				  \reset@font\noindent{\ii@chapterfont\centering\textbf{\MakeUppercase{\@chapapp}\thechapter\hspace{0.5em}-- #1}\par}
 				\fi
 				\ifappendix
@@ -702,7 +702,7 @@
 
 
 %%=============================================================================
-%% FormataÁ„o das seÁıes
+%% Formata√ß√£o das se√ß√µes
 %%=============================================================================
 %\renewcommand{\section}{%name, level, indent, beforeskip, afterskip,style
 %        \@startsection{section}{1}{0pt}{18pt}{18pt}{\reset@font\bfseries\@setfontsize\Large{12}{20}}
@@ -728,7 +728,7 @@
                                    {-1em}%
                                    {\reset@font\@setfontsize\Large{12}{20}}}	
 %%=============================================================================
-%% RedefiniÁ„o do conte˙do das listas de figuras e tabelas
+%% Redefini√ß√£o do conte√∫do das listas de figuras e tabelas
 %%=============================================================================
 \long\def\@makecaption#1#2{%
   \vskip\abovecaptionskip
@@ -761,7 +761,7 @@
 \let\l@table\l@figure
 
 %%=============================================================================
-%% RedefiniÁ„o do formato de citaÁıes longas
+%% Redefini√ß√£o do formato de cita√ß√µes longas
 %%=============================================================================
 \renewenvironment{quote}{
         \footnotesize
@@ -771,14 +771,14 @@
 }
 
 %%=============================================================================
-%% Ajuste do formato das citaÁıes e referÍncias
+%% Ajuste do formato das cita√ß√µes e refer√™ncias
 %%=============================================================================
 \setlength{\bibhang}{0pt}
 \let\cite\citep
 
 
 %%=============================================================================
-%% FormataÁ„o dos ApÍndices 
+%% Formata√ß√£o dos Ap√™ndices 
 %%=============================================================================
 
 \newcommand{\appendixpage}{%
@@ -837,7 +837,7 @@
 }
 
 %%=============================================================================
-%% FormataÁ„o dos Anexos
+%% Formata√ß√£o dos Anexos
 %%=============================================================================
 \newcommand{\annexpage}{%
   \if@openright\cleardoublepage\else\clearpage\fi
@@ -894,10 +894,10 @@
 }	
 
 %%=============================================================================
-%% Notas de rodapÈ
+%% Notas de rodap√©
 %%=============================================================================
 
-% NumeraÁ„o sequencial ao longo do texto
+% Numera√ß√£o sequencial ao longo do texto
 \def\@removefromreset#1#2{{%
   \expandafter\let\csname c@#1\endcsname\@removefromreset
   \def\@elt##1{%
@@ -916,6 +916,6 @@
   \hrule\@width.19\columnwidth
   \kern2.6\p@}
 
-%Sem indentaÁ„o o texto da nota de rodapÈ  
+%Sem indenta√ß√£o o texto da nota de rodap√©  
 \renewcommand\@makefntext[1]{%
   \noindent\makebox[0.5em][r]{\@makefnmark}~~#1}
