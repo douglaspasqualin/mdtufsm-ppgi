@@ -916,6 +916,10 @@
   \hrule\@width.19\columnwidth
   \kern2.6\p@}
 
-%Sem indentação o texto da nota de rodapé  
-\renewcommand\@makefntext[1]{%
-  \noindent\makebox[0.5em][r]{\@makefnmark}~~#1}
+% %Sem indentação o texto da nota de rodapé  
+% \renewcommand\@makefntext[1]{%
+%   \noindent\makebox[0.5em][r]{\@makefnmark}~~#1}
+
+%Um espaço simples no texto da nota de rodapé  
+\let\myfootnote\footnote
+\renewcommand{\footnote}[1]{\myfootnote{~#1}}
