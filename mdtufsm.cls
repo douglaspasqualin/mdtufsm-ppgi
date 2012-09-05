@@ -29,7 +29,7 @@
 %% Identificação
 %%=============================================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mdtufsm}[2012/06/08 v1.4.1a Formatacao de monografias, dissertacoes e teses da UFSM]
+\ProvidesClass{mdtufsm}[2012/09/02 v1.4.2a Formatacao de monografias, dissertacoes e teses da UFSM]
 
 %%=============================================================================
 %% Declaração de opções
@@ -696,7 +696,7 @@
         \@makeschapterhead{#1}\@afterheading
 }
 \def\@makeschapterhead#1{%
-        \reset@font\centerline{\ii@chapterfont\centering\textbf{\MakeUppercase{#1}}}
+        \reset@font\noindent{\ii@chapterfont\centering\textbf{\MakeUppercase{#1}}\par}
         \addvspace{25pt}
 }
 
